@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="GymApp.Api/GymApp.Api.csproj" Id="e975b6c6-41e5-4c8c-933c-a2250c34b13b" />
+    <Project Path="GymApp.Shared/GymApp.Shared.csproj" Id="e324aa22-d3ae-4d80-952d-05a249349e7f" />
+    <Project Path="GymApp.Visual/GymApp.Visual.csproj">
+      <Deploy Solution="Debug|*" />
+    </Project>
+  </Folder>
+</Solution>
