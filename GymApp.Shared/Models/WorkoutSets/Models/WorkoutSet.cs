@@ -1,8 +1,8 @@
 ﻿using GymApp.Shared.Models.Exercises.Models;
-using GymApp.Shared.Models.ExerciseSets.Dtos;
+using GymApp.Shared.Models.WorkoutSets.Dtos;
 using GymApp.Shared.Models.Sessions.Models;
 
-namespace GymApp.Shared.Models.ExerciseSets.Models;
+namespace GymApp.Shared.Models.WorkoutSets.Models;
 
 public class WorkoutSet
 {

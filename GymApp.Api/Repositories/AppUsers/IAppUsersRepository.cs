@@ -4,9 +4,9 @@ namespace GymApp.Api.Repositories.AppUsers;
 
 public interface IAppUsersRepository
 {
-    Task<AppUser[]> GetUsers(CancellationToken ct = default);
-    Task<AppUser> GetUserById(CancellationToken ct = default);
-    Task Create(AppUser appUser, CancellationToken ct = default);
-    void Update(AppUser appUser);
-    void Delete(AppUser appUser);
+    Task<AppUser[]> GetAsync(CancellationToken ct = default);
+    Task<AppUser?> GetByIdAsync(Guid appUserId, CancellationToken ct = default);
+    Task CreateAsync(AppUser appUser, CancellationToken ct = default);
+    void UpdateAsync(AppUser appUser);
+    void DeleteAsync(AppUser appUser);
 }

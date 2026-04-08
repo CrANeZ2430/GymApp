@@ -1,4 +1,4 @@
-﻿namespace GymApp.Shared.Models.ExerciseSets.Dtos;
+﻿namespace GymApp.Shared.Models.WorkoutSets.Dtos;
 
 public record UpdateWorkoutSetDto(
     float Weight,

@@ -1,5 +1,6 @@
 ﻿namespace GymApp.Shared.Models.Exercises.Models;
 
+[Flags]
 public enum MuscleGroups
 {
     None = 0,

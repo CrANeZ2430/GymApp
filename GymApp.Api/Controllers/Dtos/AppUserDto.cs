@@ -1,4 +1,4 @@
-﻿namespace GymApp.Api.Controllers.AppUsers.Dtos;
+﻿namespace GymApp.Api.Controllers.Dtos;
 
 public record AppUserDto(
     Guid AppUserId,

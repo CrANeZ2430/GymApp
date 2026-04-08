@@ -1,4 +1,4 @@
-﻿using GymApp.Api.Controllers.AppUsers.Dtos;
+﻿using GymApp.Api.Controllers.Dtos;
 using GymApp.Api.Repositories.AppUsers;
 using GymApp.Api.Repositories.UnitOfWork;
 using GymApp.Shared.Models.AppUsers.Dtos;
@@ -12,15 +12,37 @@ namespace GymApp.Api.Controllers.AppUsers;
 [ApiController]
 public class AppUsersController(
     IAppUsersRepository appUsersRepository, 
-    IUnitOfWorkRepository unitOfWorkRepository) : ControllerBase
+    IUnitOfWorkRepository unitOfWorkRepository) 
+    : ControllerBase
 {
     [HttpGet]
     public async Task<IActionResult> GetAppUsers(
         CancellationToken ct = default)
     {
-        var appUsers = await appUsersRepository.GetUsers();
+        var appUsers = await appUsersRepository.GetAsync(ct);
+        var appUsersDto = appUsers.Select(au => 
+            new AppUserDto(
+                au.AppUserId,
+                au.UserName,
+                au.Email,
+                au.Age));
 
-        return Ok(appUsers);
+        return Ok(appUsersDto);
+    }
+
+    [HttpGet("{appUserId:guid}")]
+    public async Task<IActionResult> GetUserById(
+        [FromRoute] Guid appUserId,
+        CancellationToken ct = default)
+    {
+        var appUser = await appUsersRepository.GetByIdAsync(appUserId, ct);
+        var appUserDto = new AppUserDto(
+            appUser.AppUserId,
+            appUser.UserName,
+            appUser.Email,
+            appUser.Age);
+
+        return Ok(appUserDto);
     }
 
     [HttpPost]
@@ -29,9 +51,35 @@ public class AppUsersController(
         CancellationToken ct = default)
     {
         var appUser = AppUser.Create(dto);
-        await appUsersRepository.Create(appUser, ct);
+        await appUsersRepository.CreateAsync(appUser, ct);
         await unitOfWorkRepository.SaveChangesAsync(ct);
 
-        return Ok();
+        return CreatedAtAction(nameof(GetUserById), new { appUserId = appUser.AppUserId }, null);
+    }
+
+    [HttpPut("{appUserId:guid}")]
+    public async Task<IActionResult> UpdateUser(
+        [FromRoute] Guid appUserId,
+        [FromBody] UpdateAppUserDto dto,
+        CancellationToken ct = default)
+    {
+        var appUser = await appUsersRepository.GetByIdAsync(appUserId, ct);
+        appUser.Update(dto);
+        appUsersRepository.UpdateAsync(appUser);
+        await unitOfWorkRepository.SaveChangesAsync(ct);
+
+        return NoContent();
+    }
+
+    [HttpDelete("{appUserId:guid}")]
+    public async Task<IActionResult> DeleteUser(
+        [FromRoute] Guid appUserId,
+        CancellationToken ct = default)
+    {
+        var appUser = await appUsersRepository.GetByIdAsync(appUserId, ct);
+        appUsersRepository.DeleteAsync(appUser);
+        await unitOfWorkRepository.SaveChangesAsync(ct);
+
+        return NoContent();
     }
 }

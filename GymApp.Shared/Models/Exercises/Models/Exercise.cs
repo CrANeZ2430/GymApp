@@ -1,5 +1,5 @@
 ﻿using GymApp.Shared.Models.Exercises.Dtos;
-using GymApp.Shared.Models.ExerciseSets.Models;
+using GymApp.Shared.Models.WorkoutSets.Models;
 
 namespace GymApp.Shared.Models.Exercises.Models;
 

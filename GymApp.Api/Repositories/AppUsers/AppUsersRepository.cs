@@ -6,7 +6,7 @@ namespace GymApp.Api.Repositories.AppUsers;
 
 public class AppUsersRepository(GymAppDbContext dbContext) : IAppUsersRepository
 {
-    public Task<AppUser[]> GetUsers(CancellationToken ct = default)
+    public Task<AppUser[]> GetAsync(CancellationToken ct = default)
     {
         return dbContext.AppUsers
             .Include(au => au.Sessions)
@@ -14,23 +14,26 @@ public class AppUsersRepository(GymAppDbContext dbContext) : IAppUsersRepository
             .ToArrayAsync(ct);
     }
 
-    public Task<AppUser> GetUserById(CancellationToken ct = default)
+    public Task<AppUser?> GetByIdAsync(Guid appUserId, CancellationToken ct = default)
     {
-        throw new NotImplementedException();
+        return dbContext.AppUsers
+            .Include(au => au.Sessions)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(au => au.AppUserId == appUserId, ct);
     }
     
-    public async Task Create(AppUser appUser, CancellationToken ct = default)
+    public async Task CreateAsync(AppUser appUser, CancellationToken ct = default)
     {
         await dbContext.AddAsync(appUser, ct);
     }
 
-    public void Update(AppUser appUser)
+    public void UpdateAsync(AppUser appUser)
     {
-        throw new NotImplementedException();
+        dbContext.Update(appUser);
     }
 
-    public void Delete(AppUser appUser)
+    public void DeleteAsync(AppUser appUser)
     {
-        throw new NotImplementedException();
+        dbContext.Remove(appUser);
     }
 }

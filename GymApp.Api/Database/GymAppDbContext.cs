@@ -1,6 +1,6 @@
 ﻿using GymApp.Shared.Models.AppUsers.Models;
 using GymApp.Shared.Models.Exercises.Models;
-using GymApp.Shared.Models.ExerciseSets.Models;
+using GymApp.Shared.Models.WorkoutSets.Models;
 using GymApp.Shared.Models.Sessions.Models;
 using Microsoft.EntityFrameworkCore;
 

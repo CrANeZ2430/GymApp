@@ -1,4 +1,4 @@
-﻿using GymApp.Shared.Models.ExerciseSets.Models;
+﻿using GymApp.Shared.Models.WorkoutSets.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

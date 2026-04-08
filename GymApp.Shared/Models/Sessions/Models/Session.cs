@@ -1,5 +1,5 @@
 ﻿using GymApp.Shared.Models.AppUsers.Models;
-using GymApp.Shared.Models.ExerciseSets.Models;
+using GymApp.Shared.Models.WorkoutSets.Models;
 using GymApp.Shared.Models.Sessions.Dtos;
 
 namespace GymApp.Shared.Models.Sessions.Models;
