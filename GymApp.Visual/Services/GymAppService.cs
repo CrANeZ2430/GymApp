@@ -1,5 +1,7 @@
 ﻿using GymApp.Shared.Dtos;
 using System.Net.Http.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace GymApp.Visual.Services;
 
@@ -11,8 +13,14 @@ public class GymAppService(HttpClient client)
     {
         try
         {
-            var appUsers = await client.GetFromJsonAsync<ExerciseDto[]>("exercise", ct);
-            return appUsers ?? Array.Empty<ExerciseDto>();
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true,
+                Converters = { new JsonStringEnumConverter() }
+            };
+
+            var exercises = await client.GetFromJsonAsync<ExerciseDto[]>("exercises", options, ct);
+            return exercises ?? Array.Empty<ExerciseDto>();
         }
         catch (Exception ex)
         {
