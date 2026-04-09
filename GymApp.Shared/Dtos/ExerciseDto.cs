@@ -1,6 +1,6 @@
 ﻿using GymApp.Shared.Models.Exercises.Models;
 
-namespace GymApp.Api.Controllers.Dtos;
+namespace GymApp.Shared.Dtos;
 
 public record ExerciseDto(
     Guid ExerciseId,

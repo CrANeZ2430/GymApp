@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using GymApp.Visual.Services;
+using Microsoft.Extensions.Logging;
 
 namespace GymApp.Visual
 {
@@ -18,6 +19,13 @@ namespace GymApp.Visual
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+
+            builder.Services.AddHttpClient<GymAppService>(client =>
+            {
+                client.BaseAddress = new Uri(DeviceInfo.Platform == DevicePlatform.Android
+                    ? "https://10.0.2.2:7267/api/"
+                    : "https://localhost:7267/api/");
+            });
 
             return builder.Build();
         }

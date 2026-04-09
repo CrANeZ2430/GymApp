@@ -1,4 +1,4 @@
-﻿namespace GymApp.Api.Controllers.Dtos;
+﻿namespace GymApp.Shared.Dtos;
 
 public record SessionDto(
     Guid SessionId,

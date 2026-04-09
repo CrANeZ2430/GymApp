@@ -1,4 +1,4 @@
-﻿using GymApp.Api.Controllers.Dtos;
+﻿using GymApp.Shared.Dtos;
 using GymApp.Api.Repositories.AppUsers;
 using GymApp.Api.Repositories.UnitOfWork;
 using GymApp.Shared.Models.AppUsers.Dtos;
