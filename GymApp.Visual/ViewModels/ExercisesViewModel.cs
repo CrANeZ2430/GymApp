@@ -10,7 +10,7 @@ public partial class ExercisesViewModel : BaseViewModel
 {
     GymAppService service;
 
-    public ObservableCollection<ExerciseDto> Exercises { get; private set; } = new(){ new ExerciseDto(Guid.NewGuid(), "Smth", 0, 0) };
+    public ObservableCollection<ExerciseDto> Exercises { get; private set; } = new();
 
     public ExercisesViewModel(GymAppService service)
     {
