@@ -19,7 +19,7 @@ public partial class ExercisesViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    public async Task GetExercisesAsync(CancellationToken ct = default)
+    private async Task GetExercisesAsync(CancellationToken ct = default)
     {
         if (IsBusy)
             return;
@@ -29,7 +29,7 @@ public partial class ExercisesViewModel : BaseViewModel
             IsBusy = true;
             var exercises = await service.GetExercisesAsync(ct);
 
-            if (Exercises.Count() != 0)
+            if (Exercises.Any())
                 Exercises.Clear();
 
             foreach (var exercise in exercises)
