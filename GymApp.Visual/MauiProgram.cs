@@ -1,4 +1,5 @@
-﻿using GymApp.Visual.Services;
+﻿using GymApp.Visual.Constants;
+using GymApp.Visual.Services;
 using GymApp.Visual.View;
 using GymApp.Visual.ViewModels;
 using Microsoft.Extensions.Logging;
@@ -25,12 +26,16 @@ namespace GymApp.Visual
             builder.Services.AddHttpClient<GymAppService>(client =>
             {
                 client.BaseAddress = new Uri(DeviceInfo.Platform == DevicePlatform.Android
-                    ? "http://10.0.2.2:5264/api/"
-                    : "http://localhost:5264/api/");
+                    ? GymAppConstants.BASE_URL_ANDROID
+                    : GymAppConstants.BASE_URL);
             });
 
             builder.Services.AddSingleton<MainPage>();
-            builder.Services.AddSingleton<ExercisesViewModel>();
+            builder.Services.AddSingleton<MainPageViewModel>();
+            builder.Services.AddTransient<ExercisesPage>();
+            builder.Services.AddTransient<ExercisesViewModel>();
+            builder.Services.AddTransient<AddExercisePage>();
+            builder.Services.AddTransient<AddExerciseViewModel>();
 
             return builder.Build();
         }

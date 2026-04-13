@@ -2,9 +2,9 @@ using GymApp.Visual.ViewModels;
 
 namespace GymApp.Visual.View;
 
-public partial class MainPage : ContentPage
+public partial class AddExercisePage : ContentPage
 {
-	public MainPage(MainPageViewModel viewModel)
+	public AddExercisePage(AddExerciseViewModel viewModel)
 	{
 		InitializeComponent();
 		BindingContext = viewModel;

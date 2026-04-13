@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:GymApp.Visual.ViewModels"
+             xmlns:dto="clr-namespace:GymApp.Shared.Dtos;assembly=GymApp.Shared"
+             x:Class="GymApp.Visual.View.ExercisesPage"
+             x:DataType="viewmodel:ExercisesViewModel"
+             Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Refresh" 
+                     Command="{Binding GetExercisesCommand}" />
+        <ToolbarItem Text="Add"
+                     Command="{Binding GoToAddExercisePageCommand}"/>
+        <ToolbarItem Text="Delete"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid ColumnDefinitions="*,*"
+          ColumnSpacing="5"
+          RowDefinitions="*,Auto"
+          RowSpacing="0"
+          Padding="5">
+        <CollectionView BackgroundColor="Transparent"
+                        Grid.ColumnSpan="2"
+                        ItemsSource="{Binding Exercises}"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="dto:ExerciseDto">
+                    <Grid>
+                        <Border BackgroundColor="{StaticResource Gray900}" 
+                                Padding="8,4" 
+                                Margin="0,0,5,5"
+                                StrokeShape="RoundRectangle 20">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Title}"
+                                       TextColor="{StaticResource Primary}"
+                                       FontSize="18"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding MuscleGroups, StringFormat='Muscles: {0}'}"
+                                       TextColor="{StaticResource Gray100}"/>
+                                <Label Text="{Binding Equipment, StringFormat='Equipment: {0}'}"
+                                       TextColor="{StaticResource Gray100}"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Grid.Column="0"
+                Grid.Row="1"
+                Text="Get Exercises"
+                TextColor="White"
+                Command="{Binding GetExercisesCommand}"/>
+        <Button Grid.Column="1"
+                Grid.Row="1"
+                Text="Add Exercise"
+                TextColor="White"/>
+    </Grid>
+
+</ContentPage>

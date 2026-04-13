@@ -1,10 +1,13 @@
-﻿namespace GymApp.Visual
+﻿using GymApp.Visual.View;
+
+namespace GymApp.Visual;
+
+public partial class AppShell : Shell
 {
-    public partial class AppShell : Shell
+    public AppShell()
     {
-        public AppShell()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+
+        Routing.RegisterRoute(nameof(AddExercisePage), typeof(AddExercisePage));
     }
 }

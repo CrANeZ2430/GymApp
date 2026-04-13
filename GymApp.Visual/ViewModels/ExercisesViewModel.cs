@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using GymApp.Shared.Dtos;
 using GymApp.Visual.Services;
+using GymApp.Visual.View;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 
@@ -8,13 +9,13 @@ namespace GymApp.Visual.ViewModels;
 
 public partial class ExercisesViewModel : BaseViewModel
 {
-    GymAppService service;
+    private GymAppService _service;
 
     public ObservableCollection<ExerciseDto> Exercises { get; private set; } = new();
 
     public ExercisesViewModel(GymAppService service)
     {
-        this.service = service;
+        _service = service;
         Title = "Exercises";
     }
 
@@ -27,7 +28,7 @@ public partial class ExercisesViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            var exercises = await service.GetExercisesAsync(ct);
+            var exercises = await _service.GetExercisesAsync(ct);
 
             if (Exercises.Any())
                 Exercises.Clear();
@@ -43,6 +44,20 @@ public partial class ExercisesViewModel : BaseViewModel
         finally
         {
             IsBusy = false;
+        }
+    }
+
+    [RelayCommand]
+    private async Task GoToAddExercisePageAsync()
+    {
+        try 
+        { 
+            await Shell.Current.GoToAsync(nameof(AddExercisePage), true); 
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+            await Shell.Current.DisplayAlertAsync("Error!", $"{ex.Message}", "OK");
         }
     }
 }

@@ -3,12 +3,30 @@
     x:Class="GymApp.Visual.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:GymApp.Visual.View"
-    Title="GymApp.Visual">
+    xmlns:view="clr-namespace:GymApp.Visual.View"
+    Title="GymApp.Visual"
+    FlyoutBehavior="Flyout">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <Shell.FlyoutHeader>
+        <Grid BackgroundColor="{StaticResource Primary}" 
+              HeightRequest="100">
+            <Label Text="GymApp Pro"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center" 
+                   TextColor="White"/>
+        </Grid>
+    </Shell.FlyoutHeader>
 
+    <ShellContent Title="Home"
+                  ContentTemplate="{DataTemplate view:MainPage}"
+                  Route="MainPage" />
+
+    <FlyoutItem Title="Exercises" Icon="dumbell.png">
+        <ShellContent ContentTemplate="{DataTemplate view:ExercisesPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Workouts" Icon="calendar.png">
+        <ShellContent ContentTemplate="{DataTemplate view:WorkoutsPage}" />
+    </FlyoutItem>
+    
 </Shell>
