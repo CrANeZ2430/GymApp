@@ -32,8 +32,10 @@ namespace GymApp.Visual
 
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<MainPageViewModel>();
+
             builder.Services.AddTransient<ExercisesPage>();
             builder.Services.AddTransient<ExercisesViewModel>();
+
             builder.Services.AddTransient<AddExercisePage>();
             builder.Services.AddTransient<AddExerciseViewModel>();
 

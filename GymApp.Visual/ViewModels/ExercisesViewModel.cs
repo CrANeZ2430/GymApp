@@ -3,7 +3,6 @@ using GymApp.Shared.Dtos;
 using GymApp.Visual.Services;
 using GymApp.Visual.View;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 
 namespace GymApp.Visual.ViewModels;
 
@@ -38,8 +37,7 @@ public partial class ExercisesViewModel : BaseViewModel
         }
         catch (Exception ex)
         {
-            Debug.WriteLine(ex);
-            await Shell.Current.DisplayAlertAsync("Error!", $"{ex.Message}", "OK");
+            await DisplayAlert(ex);
         }
         finally
         {
@@ -56,8 +54,7 @@ public partial class ExercisesViewModel : BaseViewModel
         }
         catch (Exception ex)
         {
-            Debug.WriteLine(ex);
-            await Shell.Current.DisplayAlertAsync("Error!", $"{ex.Message}", "OK");
+            await DisplayAlert(ex);
         }
     }
 }

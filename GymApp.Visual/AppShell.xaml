@@ -11,6 +11,7 @@
         <Grid BackgroundColor="{StaticResource Primary}" 
               HeightRequest="100">
             <Label Text="GymApp Pro"
+                   FontAttributes="Bold"
                    VerticalOptions="Center"
                    HorizontalOptions="Center" 
                    TextColor="White"/>
