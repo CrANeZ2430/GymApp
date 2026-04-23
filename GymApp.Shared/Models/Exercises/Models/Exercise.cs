@@ -8,7 +8,7 @@ public class Exercise
     private readonly List<WorkoutSet> _workoutSets = new();
 
     public Guid ExerciseId { get; private set; }
-    public string Title { get; private set; }
+    public string Name { get; private set; }
     public MuscleGroups MuscleGroups { get; private set; }
     public Equipment Equipment { get; private set; }
 
@@ -16,24 +16,24 @@ public class Exercise
     
     private Exercise() { }
 
-    private Exercise(string title, MuscleGroups muscleGroups, Equipment equipment)
+    private Exercise(string name, MuscleGroups muscleGroups, Equipment equipment)
     {
         ExerciseId = Guid.NewGuid();
-        Title = title;
+        Name = name;
         MuscleGroups = muscleGroups;
         Equipment = equipment;
     }
 
     public static Exercise Create(CreateExerciseDto dto)
     {
-        return new Exercise(dto.Title,
+        return new Exercise(dto.Name,
             dto.MuscleGroups,
             dto.Equipment);
     }
 
     public void Update(UpdateExerciseDto dto)
     {
-        Title = dto.Title;
+        Name = dto.Name;
         MuscleGroups = dto.MuscleGroups;
         Equipment = dto.Equipment;
     }

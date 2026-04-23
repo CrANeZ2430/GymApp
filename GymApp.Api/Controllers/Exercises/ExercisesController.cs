@@ -23,7 +23,7 @@ public class ExercisesController(
         var exercisesDto = exercises.Select(e =>
             new ExerciseDto(
                 e.ExerciseId,
-                e.Title,
+                e.Name,
                 e.MuscleGroups,
                 e.Equipment));
 
@@ -38,7 +38,7 @@ public class ExercisesController(
         var exercise = await exercisesRepository.GetByIdAsync(exerciseId, ct);
         var exerciseDto = new ExerciseDto(
             exercise.ExerciseId,
-            exercise.Title,
+            exercise.Name,
             exercise.MuscleGroups,
             exercise.Equipment);
 

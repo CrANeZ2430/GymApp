@@ -3,6 +3,6 @@
 namespace GymApp.Shared.Models.Exercises.Dtos;
 
 public record UpdateExerciseDto(
-    string Title,
+    string Name,
     MuscleGroups MuscleGroups,
     Equipment Equipment);

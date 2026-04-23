@@ -10,7 +10,7 @@ public class ExerciseEntityTypeConfiguration : IEntityTypeConfiguration<Exercise
     {
         builder.HasKey(x => x.ExerciseId);
 
-        builder.Property(x => x.Title)
+        builder.Property(x => x.Name)
             .HasMaxLength(30)
             .IsRequired();
 

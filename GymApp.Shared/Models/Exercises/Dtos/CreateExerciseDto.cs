@@ -3,6 +3,6 @@
 namespace GymApp.Shared.Models.Exercises.Dtos;
 
 public record CreateExerciseDto(
-    string Title,
+    string Name,
     MuscleGroups MuscleGroups,
     Equipment Equipment);

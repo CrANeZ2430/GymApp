@@ -25,7 +25,7 @@ public class WorkoutSetsController(
                 ws.WorkoutSetId,
                 new ExerciseDto(
                     ws.Exercise.ExerciseId,
-                    ws.Exercise.Title,
+                    ws.Exercise.Name,
                     ws.Exercise.MuscleGroups,
                     ws.Exercise.Equipment),
                 new SessionDto(
@@ -56,7 +56,7 @@ public class WorkoutSetsController(
                 workoutSet.WorkoutSetId,
                 new ExerciseDto(
                     workoutSet.Exercise.ExerciseId,
-                    workoutSet.Exercise.Title,
+                    workoutSet.Exercise.Name,
                     workoutSet.Exercise.MuscleGroups,
                     workoutSet.Exercise.Equipment),
                 new SessionDto(

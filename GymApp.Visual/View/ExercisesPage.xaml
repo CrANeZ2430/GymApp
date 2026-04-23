@@ -33,7 +33,7 @@
                                 StrokeShape="RoundRectangle 20">
                             <VerticalStackLayout>
                                 <Label Text="{Binding Title}"
-                                       TextColor="{StaticResource Primary}"
+                                       TextColor="{StaticResource Secondary}"
                                        FontSize="18"
                                        FontAttributes="Bold"/>
                                 <Label Text="{Binding MuscleGroups, StringFormat='Muscles: {0}'}"
