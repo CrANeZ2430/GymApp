@@ -13,11 +13,19 @@ public class SessionEntityTypeConfiguration : IEntityTypeConfiguration<Session>
         builder.Property(x => x.UserId)
             .IsRequired();
 
+        builder.Property(x => x.Name)
+            .HasDefaultValue("Default")
+            .IsRequired();
+
         builder.Property(x => x.Date)
             .IsRequired();
 
         builder.Property(x => x.Note)
             .HasMaxLength(60)
+            .IsRequired();
+
+        builder.Property(x => x.IsDefault)
+            .HasDefaultValue(false)
             .IsRequired();
 
         builder.HasOne(s => s.AppUser)

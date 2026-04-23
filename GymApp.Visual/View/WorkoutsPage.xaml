@@ -8,7 +8,7 @@
         <ToolbarItem Text="Add Session"/>
     </ContentPage.ToolbarItems>
 
-    <VerticalStackLayout>
+    <CollectionView>
         
-    </VerticalStackLayout>
+    </CollectionView>
 </ContentPage>

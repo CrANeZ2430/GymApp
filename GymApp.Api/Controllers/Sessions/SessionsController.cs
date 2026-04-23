@@ -28,8 +28,10 @@ public class SessionsController(
                     s.AppUser.UserName,
                     s.AppUser.Email,
                     s.AppUser.Age),
+                s.Name,
                 s.Date,
-                s.Note));
+                s.Note,
+                s.IsDefault));
 
         return Ok(sessionsDto);
     }
@@ -47,8 +49,10 @@ public class SessionsController(
                 session.AppUser.UserName,
                 session.AppUser.Email,
                 session.AppUser.Age),
+            session.Name,
             session.Date,
-            session.Note);
+            session.Note,
+            session.IsDefault);
 
         return Ok(sessionDto);
     }

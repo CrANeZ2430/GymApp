@@ -3,5 +3,7 @@
 public record SessionDto(
     Guid SessionId,
     AppUserDto AppUserDto,
+    string Name,
     DateTime Date,
-    string Note);
+    string Note,
+    bool IsDefault);
