@@ -5,7 +5,7 @@
              xmlns:viewmodel="clr-namespace:GymApp.Visual.ViewModels"
              x:Class="GymApp.Visual.View.AddExercisePage"
              x:DataType="viewmodel:AddExerciseViewModel"
-             Title="AddExercisesPage">
+             Title="{Binding Title}">
     
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="10">

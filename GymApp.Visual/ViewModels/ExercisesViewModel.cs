@@ -9,7 +9,6 @@ namespace GymApp.Visual.ViewModels;
 public partial class ExercisesViewModel : BaseViewModel
 {
     private GymAppService _service;
-
     public ObservableCollection<ExerciseDto> Exercises { get; private set; } = new();
 
     public ExercisesViewModel(GymAppService service)
@@ -29,11 +28,11 @@ public partial class ExercisesViewModel : BaseViewModel
             IsBusy = true;
             var exercises = await _service.GetExercisesAsync(ct);
 
-            if (Exercises.Any())
-                Exercises.Clear();
-
             foreach (var exercise in exercises)
-                Exercises.Add(exercise);
+            {
+                if (!Exercises.Any(e => e.ExerciseId == exercise.ExerciseId))
+                    Exercises.Add(exercise);
+            }
         }
         catch (Exception ex)
         {

@@ -1,14 +1,55 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:GymApp.Visual.ViewModels"
+             xmlns:dto="clr-namespace:GymApp.Shared.Dtos;assembly=GymApp.Shared"
              x:Class="GymApp.Visual.View.WorkoutsPage"
-             Title="WorkoutsPage">
+             x:DataType="viewmodel:WorkoutsViewModel"
+             Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add Session"/>
+        <ToolbarItem Text="Refresh"
+                     Command="{Binding GetSessionsCommand}"/>
     </ContentPage.ToolbarItems>
 
-    <CollectionView>
-        
-    </CollectionView>
+    <Grid ColumnDefinitions="*,*"
+          ColumnSpacing="5"
+          RowDefinitions="*,Auto"
+          RowSpacing="0"
+          Padding="5">
+        <CollectionView BackgroundColor="Transparent"
+                        Grid.ColumnSpan="2"
+                        ItemsSource="{Binding Sessions}"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="dto:SessionDto">
+                    <Grid>
+                        <Border BackgroundColor="{StaticResource Gray900}" 
+                                Padding="8,4" 
+                                Margin="0,0,5,5"
+                                StrokeShape="RoundRectangle 20">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Name}"
+                                       TextColor="{StaticResource Secondary}"
+                                       FontSize="18"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding AppUserDto.UserName, StringFormat='by {0}'}"
+                                       TextColor="{StaticResource White}"
+                                       FontAttributes="Bold"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Grid.Column="0"
+                Grid.Row="1"
+                Text="Add Session"
+                TextColor="White"
+                Command="{Binding GoToAddSessionPageCommand}"/>
+        <Button Grid.Column="1"
+                Grid.Row="1"
+                Text="Delete Session"
+                TextColor="White"/>
+    </Grid>
 </ContentPage>

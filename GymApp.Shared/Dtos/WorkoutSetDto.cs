@@ -1,7 +1,7 @@
 ﻿namespace GymApp.Shared.Dtos;
 
 public record WorkoutSetDto(
-    Guid WorkoutRepId,
+    Guid WorkoutSetId,
     ExerciseDto Exercise,
     SessionDto Session,
     float Weight,

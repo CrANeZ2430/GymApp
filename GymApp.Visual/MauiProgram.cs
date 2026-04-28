@@ -39,6 +39,12 @@ namespace GymApp.Visual
             builder.Services.AddTransient<AddExercisePage>();
             builder.Services.AddTransient<AddExerciseViewModel>();
 
+            builder.Services.AddTransient<WorkoutsPage>();
+            builder.Services.AddTransient<WorkoutsViewModel>();
+
+            builder.Services.AddTransient<AddSessionPage>();
+            builder.Services.AddTransient<AddSessionViewModel>();
+
             return builder.Build();
         }
     }

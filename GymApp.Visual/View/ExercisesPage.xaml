@@ -10,9 +10,6 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Refresh" 
                      Command="{Binding GetExercisesCommand}" />
-        <ToolbarItem Text="Add"
-                     Command="{Binding GoToAddExercisePageCommand}"/>
-        <ToolbarItem Text="Delete"/>
     </ContentPage.ToolbarItems>
 
     <Grid ColumnDefinitions="*,*"
@@ -32,7 +29,7 @@
                                 Margin="0,0,5,5"
                                 StrokeShape="RoundRectangle 20">
                             <VerticalStackLayout>
-                                <Label Text="{Binding Title}"
+                                <Label Text="{Binding Name}"
                                        TextColor="{StaticResource Secondary}"
                                        FontSize="18"
                                        FontAttributes="Bold"/>
@@ -48,12 +45,12 @@
         </CollectionView>
         <Button Grid.Column="0"
                 Grid.Row="1"
-                Text="Get Exercises"
+                Text="Add Exercise"
                 TextColor="White"
-                Command="{Binding GetExercisesCommand}"/>
+                Command="{Binding GoToAddExercisePageCommand}"/>
         <Button Grid.Column="1"
                 Grid.Row="1"
-                Text="Add Exercise"
+                Text="Delete Exercises"
                 TextColor="White"/>
     </Grid>
 

@@ -4,6 +4,6 @@ namespace GymApp.Shared.Dtos;
 
 public record ExerciseDto(
     Guid ExerciseId,
-    string Title,
+    string Name,
     MuscleGroups MuscleGroups,
     Equipment Equipment);

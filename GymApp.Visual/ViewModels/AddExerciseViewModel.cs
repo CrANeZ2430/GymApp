@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using GymApp.Shared.Models.Exercises.Dtos;
 using GymApp.Shared.Models.Exercises.Models;
 using GymApp.Visual.Services;
+using GymApp.Visual.View;
 using System.Collections.ObjectModel;
 
 namespace GymApp.Visual.ViewModels;
@@ -33,7 +34,9 @@ public partial class AddExerciseViewModel : BaseViewModel
             IsBusy = true;
 
             var dto = new CreateExerciseDto(Name, GetFinalResult(), Equipment);
-            await _service.CreateExercise(dto, ct);
+            await _service.CreateExerciseAsync(dto, ct);
+            await Shell.Current.GoToAsync(nameof(ExercisesPage), true);
+
         }
         catch (Exception ex)
         {
