@@ -29,14 +29,16 @@ public partial class AddExerciseViewModel : BaseViewModel
     {
         if (IsBusy)
             return;
+
         try
         {
             IsBusy = true;
 
             var dto = new CreateExerciseDto(Name, GetFinalResult(), Equipment);
             await _service.CreateExerciseAsync(dto, ct);
-            await Shell.Current.GoToAsync("..", true);
 
+            await Shell.Current.DisplayAlertAsync("Success", "Exercise created successfully!", "OK");
+            await Shell.Current.GoToAsync("..", true);
         }
         catch (Exception ex)
         {

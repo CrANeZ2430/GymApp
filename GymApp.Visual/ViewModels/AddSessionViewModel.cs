@@ -27,15 +27,26 @@ public partial class AddSessionViewModel : BaseViewModel
     [RelayCommand]
     private async Task AddSessionAsync(CancellationToken ct = default)
     {
+        if (IsBusy)
+            return;
+
         try
         {
+            IsBusy = true;
+
             var dto = new CreateSessionDto(_userId, Name, Date.ToUniversalTime(), Note, IsDefault);
             await _service.CreateSessionAsync(dto, ct);
+
+            await Shell.Current.DisplayAlertAsync("Success", "Session created successfully!", "OK");
             await Shell.Current.GoToAsync("..", true);
         }
         catch (Exception ex)
         {
             await DisplayAlert(ex);
+        }
+        finally
+        {
+            IsBusy = false;
         }
     }
 }
