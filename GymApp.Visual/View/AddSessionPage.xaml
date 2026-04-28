@@ -5,6 +5,30 @@
              x:Class="GymApp.Visual.View.AddSessionPage"
              x:DataType="viewmode:AddSessionViewModel"
              Title="{Binding Title}">
-    <VerticalStackLayout>
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Label Text="Name" FontAttributes="Bold"/>
+            <Entry Text="{Binding Name}"/>
+
+            <Label Text="Date" FontAttributes="Bold"/>
+            <DatePicker Date="{Binding Date}"
+                        MaximumDate="12/31/2040"
+                        MinimumDate="01/04/2026"
+                        BackgroundColor="Transparent"/>
+
+            <Label Text="Note" FontAttributes="Bold"/>
+            <Entry Text="{Binding Note}"/>
+
+            <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                <CheckBox IsChecked="{Binding IsDefault}" />
+                <Label Text="Is Default?" 
+                       VerticalOptions="Center"
+                       FontAttributes="Bold"/>
+            </HorizontalStackLayout>
+
+            <Button Text="Add Session"
+                    TextColor="White"
+                    Command="{Binding AddSessionCommand}"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

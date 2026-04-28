@@ -9,7 +9,6 @@
     
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="10">
-
             <Label Text="Name" FontAttributes="Bold"/>
             <Entry Text="{Binding Name}" Placeholder="e.g., Bench Press"/>
 
@@ -30,8 +29,8 @@
                 <BindableLayout.ItemTemplate>
                     <DataTemplate x:DataType="viewmodel:FlagOption">
                         <HorizontalStackLayout Spacing="10">
-                            <CheckBox IsChecked="{Binding IsSelected}" />
-                            <Label Text="{Binding Name}" VerticalOptions="Center" />
+                            <CheckBox IsChecked="{Binding IsSelected}"/>
+                            <Label Text="{Binding Name}" VerticalOptions="Center"/>
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>

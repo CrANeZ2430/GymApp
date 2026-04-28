@@ -35,7 +35,7 @@ public partial class AddExerciseViewModel : BaseViewModel
 
             var dto = new CreateExerciseDto(Name, GetFinalResult(), Equipment);
             await _service.CreateExerciseAsync(dto, ct);
-            await Shell.Current.GoToAsync(nameof(ExercisesPage), true);
+            await Shell.Current.GoToAsync("..", true);
 
         }
         catch (Exception ex)

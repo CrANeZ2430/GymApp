@@ -4,7 +4,7 @@ namespace GymApp.Visual.View;
 
 public partial class MainPage : ContentPage
 {
-	public MainPage(MainPageViewModel viewModel)
+	public MainPage(MainViewModel viewModel)
 	{
 		InitializeComponent();
 		BindingContext = viewModel;

@@ -29,8 +29,9 @@ public partial class AddSessionViewModel : BaseViewModel
     {
         try
         {
-            var dto = new CreateSessionDto(_userId, Name, Date, Note, IsDefault);
+            var dto = new CreateSessionDto(_userId, Name, Date.ToUniversalTime(), Note, IsDefault);
             await _service.CreateSessionAsync(dto, ct);
+            await Shell.Current.GoToAsync("..", true);
         }
         catch (Exception ex)
         {
