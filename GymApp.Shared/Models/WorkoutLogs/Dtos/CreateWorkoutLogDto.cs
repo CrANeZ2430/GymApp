@@ -1,9 +1,10 @@
-﻿namespace GymApp.Shared.Models.WorkoutSets.Dtos;
+﻿namespace GymApp.Shared.Models.WorkoutLogs.Dtos;
 
-public record CreateWorkoutSetDto(
+public record CreateWorkoutLogDto(
     Guid SessionId,
     Guid ExerciseId,
     float Weight,
+    int Sets,
     int? Reps,
     int? Duration,
     int RestTime);

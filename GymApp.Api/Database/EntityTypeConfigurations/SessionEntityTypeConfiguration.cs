@@ -32,10 +32,10 @@ public class SessionEntityTypeConfiguration : IEntityTypeConfiguration<Session>
             .WithMany(au => au.Sessions)
             .HasForeignKey(s => s.UserId);
 
-        builder.HasMany(s => s.WorkoutSets)
+        builder.HasMany(s => s.WorkoutLogs)
             .WithOne(ws => ws.Session);
 
-        builder.Navigation(s => s.WorkoutSets)
+        builder.Navigation(s => s.WorkoutLogs)
             .UsePropertyAccessMode(PropertyAccessMode.Field);
     }
 }

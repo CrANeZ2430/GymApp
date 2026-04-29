@@ -1,12 +1,12 @@
 ﻿using GymApp.Shared.Models.AppUsers.Models;
-using GymApp.Shared.Models.WorkoutSets.Models;
+using GymApp.Shared.Models.WorkoutLogs.Models;
 using GymApp.Shared.Models.Sessions.Dtos;
 
 namespace GymApp.Shared.Models.Sessions.Models;
 
 public class Session
 {
-    private readonly List<WorkoutSet> _workoutSets = new();
+    private readonly List<WorkoutLog> _workoutLogs = new();
 
     public Guid SessionId { get; private set; }
     public Guid UserId { get; private set; }
@@ -16,7 +16,7 @@ public class Session
     public bool IsDefault { get; private set; }
 
     public AppUser AppUser { get; private set; }
-    public ICollection<WorkoutSet> WorkoutSets => _workoutSets;
+    public ICollection<WorkoutLog> WorkoutLogs => _workoutLogs;
 
     private Session() { }
 

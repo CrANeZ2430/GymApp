@@ -10,7 +10,7 @@ public class SessionsRepository(GymAppDbContext dbContext) : ISessionsRepository
     {
         return await dbContext.Sessions
             .Include(s => s.AppUser)
-            //.Include(s => s.WorkoutSets)
+            //.Include(s => s.WorkoutLogs)
             .AsNoTracking()
             .ToArrayAsync(ct);
     }
@@ -19,7 +19,7 @@ public class SessionsRepository(GymAppDbContext dbContext) : ISessionsRepository
     {
         return await dbContext.Sessions
             .Include(s => s.AppUser)
-            //.Include(s => s.WorkoutSets)
+            //.Include(s => s.WorkoutLogs)
             .AsNoTracking()
             .FirstOrDefaultAsync(s => s.SessionId == sessionsId, ct);
             

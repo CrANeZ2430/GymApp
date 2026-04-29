@@ -2,7 +2,7 @@
 using GymApp.Api.Repositories.Exercises;
 using GymApp.Api.Repositories.Sessions;
 using GymApp.Api.Repositories.UnitOfWork;
-using GymApp.Api.Repositories.WorkoutSets;
+using GymApp.Api.Repositories.WorkoutLogs;
 
 namespace GymApp.Api.Repositories;
 
@@ -14,6 +14,6 @@ public static class RepositoriesRegistration
         services.AddScoped<IAppUsersRepository, AppUsersRepository>();
         services.AddScoped<ISessionsRepository, SessionsRepository>();
         services.AddScoped<IExercisesRepository, ExercisesRepository>();
-        services.AddScoped<IWorkoutSetsRepository, WorkoutSetsRepository>();
+        services.AddScoped<IWorkoutLogsRepository, WorkoutLogsRepository>();
     }
 }

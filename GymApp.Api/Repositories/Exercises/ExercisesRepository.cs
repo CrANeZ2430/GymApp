@@ -9,7 +9,7 @@ public class ExercisesRepository(GymAppDbContext dbContext) : IExercisesReposito
     public async Task<Exercise[]> GetAsync(CancellationToken ct = default)
     {
         return await dbContext.Exercises
-            //.Include(e => e.WorkoutSets)
+            //.Include(e => e.WorkoutLogs)
             .AsNoTracking()
             .ToArrayAsync(ct);
     }
@@ -17,7 +17,7 @@ public class ExercisesRepository(GymAppDbContext dbContext) : IExercisesReposito
     public async Task<Exercise?> GetByIdAsync(Guid exerciseId, CancellationToken ct = default)
     {
         return await dbContext.Exercises
-            //.Include(e => e.WorkoutSets)
+            //.Include(e => e.WorkoutLogs)
             .AsNoTracking()
             .FirstOrDefaultAsync(e => e.ExerciseId == exerciseId, ct);
     }

@@ -20,10 +20,10 @@ public class ExerciseEntityTypeConfiguration : IEntityTypeConfiguration<Exercise
         builder.Property(x => x.Equipment)
             .IsRequired();
 
-        builder.HasMany(e => e.WorkoutSets)
+        builder.HasMany(e => e.WorkoutLogs)
             .WithOne(ws => ws.Exercise);
 
-        builder.Navigation(e => e.WorkoutSets)
+        builder.Navigation(e => e.WorkoutLogs)
             .UsePropertyAccessMode(PropertyAccessMode.Field);
     }
 }

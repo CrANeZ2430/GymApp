@@ -1,6 +1,6 @@
 ﻿using GymApp.Shared.Models.AppUsers.Models;
 using GymApp.Shared.Models.Exercises.Models;
-using GymApp.Shared.Models.WorkoutSets.Models;
+using GymApp.Shared.Models.WorkoutLogs.Models;
 using GymApp.Shared.Models.Sessions.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +11,7 @@ public class GymAppDbContext(DbContextOptions<GymAppDbContext> options) : DbCont
     public DbSet<AppUser> AppUsers { get; set; }
     public DbSet<Session> Sessions { get; set; }
     public DbSet<Exercise> Exercises { get; set; }
-    public DbSet<WorkoutSet> WorkoutSets { get; set; }
+    public DbSet<WorkoutLog> WorkoutLogs { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

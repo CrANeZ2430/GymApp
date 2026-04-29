@@ -1,11 +1,11 @@
 ﻿namespace GymApp.Shared.Dtos;
 
-public record WorkoutSetDto(
-    Guid WorkoutSetId,
+public record WorkoutLogDto(
+    Guid WorkoutLogId,
     ExerciseDto Exercise,
     SessionDto Session,
     float Weight,
+    int Sets,
     int? Reps,
     int? Duration,
-    int RestTime,
-    DateTime DoneAt);
+    int RestTime);
