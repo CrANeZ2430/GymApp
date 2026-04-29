@@ -37,7 +37,7 @@ public partial class WorkoutsViewModel : BaseViewModel
         }
         catch (Exception ex)
         {
-            await DisplayAlert(ex);
+            await DisplayAlertAsync(ex);
         }
         finally
         {
@@ -48,13 +48,46 @@ public partial class WorkoutsViewModel : BaseViewModel
     [RelayCommand]
     private async Task GoToAddSessionPageAsync()
     {
+        if (IsBusy)
+            return;
+
         try
         {
+            IsBusy = true;
             await Shell.Current.GoToAsync(nameof(AddSessionPage), true);
         }
         catch (Exception ex)
         {
-            await DisplayAlert(ex);
+            await DisplayAlertAsync(ex);
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
+
+    [RelayCommand]
+    private async Task GoToSessionDetailsPageAsync(SessionDto session)
+    {
+        if (IsBusy)
+            return;
+
+        try
+        {
+            IsBusy = true;
+            await Shell.Current.GoToAsync(nameof(SessionDetailsPage), true,
+                new Dictionary<string, object>
+                {
+                    { "Session", session }
+                });
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlertAsync(ex);
+        }
+        finally
+        {
+            IsBusy = false;
         }
     }
 }

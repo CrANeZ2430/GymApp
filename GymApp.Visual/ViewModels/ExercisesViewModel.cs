@@ -36,7 +36,7 @@ public partial class ExercisesViewModel : BaseViewModel
         }
         catch (Exception ex)
         {
-            await DisplayAlert(ex);
+            await DisplayAlertAsync(ex);
         }
         finally
         {
@@ -47,13 +47,21 @@ public partial class ExercisesViewModel : BaseViewModel
     [RelayCommand]
     private async Task GoToAddExercisePageAsync()
     {
+        if (IsBusy)
+            return;
+
         try 
-        { 
+        {
+            IsBusy = true;
             await Shell.Current.GoToAsync(nameof(AddExercisePage), true); 
         }
         catch (Exception ex)
         {
-            await DisplayAlert(ex);
+            await DisplayAlertAsync(ex);
+        }
+        finally
+        {
+            IsBusy = false;
         }
     }
 }

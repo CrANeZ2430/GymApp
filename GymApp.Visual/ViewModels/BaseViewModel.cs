@@ -10,7 +10,7 @@ public partial class BaseViewModel : ObservableObject
     [ObservableProperty]
     private string title;
 
-    protected async Task DisplayAlert(Exception ex)
+    protected async Task DisplayAlertAsync(Exception ex)
     {
         Debug.WriteLine(ex);
         await Shell.Current.DisplayAlertAsync("Error!", $"{ex.Message}", "OK");

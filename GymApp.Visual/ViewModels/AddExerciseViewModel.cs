@@ -42,7 +42,7 @@ public partial class AddExerciseViewModel : BaseViewModel
         }
         catch (Exception ex)
         {
-            await DisplayAlert(ex);
+            await DisplayAlertAsync(ex);
         }
         finally
         {

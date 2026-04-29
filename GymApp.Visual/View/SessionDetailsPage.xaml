@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:GymApp.Visual.ViewModels"
+             x:Class="GymApp.Visual.View.SessionDetailsPage"
+             x:DataType="viewmodel:SessionDetailsViewModel"
+             Title="{Binding Title}">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <VerticalStackLayout Spacing="10">
+                <Label Text="{Binding Session.Name}" FontAttributes="Bold" FontSize="24" TextColor="{StaticResource PrimaryDark}"/>
+                <Label Text="{Binding Session.Date, StringFormat='Date: {0:dd-MM-yyyy}'}" FontAttributes="Bold"/>
+                <Label Text="{Binding Session.Note, StringFormat='Note: {0}'}" FontAttributes="Bold"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Exercises" FontAttributes="Bold" FontSize="18" TextColor="{StaticResource PrimaryDark}"/>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
