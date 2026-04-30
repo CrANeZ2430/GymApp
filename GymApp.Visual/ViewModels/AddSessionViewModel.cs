@@ -1,13 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using GymApp.Shared.Models.Sessions.Dtos;
-using GymApp.Visual.Services;
+using GymApp.Visual.Services.Sessions;
 
 namespace GymApp.Visual.ViewModels;
 
 public partial class AddSessionViewModel : BaseViewModel
 {
-    private GymAppService _service;
+    private ISessionsService _service;
     private Guid _userId = new Guid("02d59402-af23-45a2-9939-516849a766cb");
     [ObservableProperty]
     private string _name;
@@ -18,7 +18,7 @@ public partial class AddSessionViewModel : BaseViewModel
     [ObservableProperty]
     private bool _isDefault;
 
-    public AddSessionViewModel(GymAppService service)
+    public AddSessionViewModel(ISessionsService service)
     {
         Title = "Add Session";
         _service = service;

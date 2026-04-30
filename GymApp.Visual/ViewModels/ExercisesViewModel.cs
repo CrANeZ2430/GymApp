@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using GymApp.Shared.Dtos;
-using GymApp.Visual.Services;
+using GymApp.Visual.Services.Exercises;
 using GymApp.Visual.View;
 using System.Collections.ObjectModel;
 
@@ -8,10 +8,10 @@ namespace GymApp.Visual.ViewModels;
 
 public partial class ExercisesViewModel : BaseViewModel
 {
-    private GymAppService _service;
+    private IExercisesService _service;
     public ObservableCollection<ExerciseDto> Exercises { get; private set; } = new();
 
-    public ExercisesViewModel(GymAppService service)
+    public ExercisesViewModel(IExercisesService service)
     {
         _service = service;
         Title = "Exercises";

@@ -1,5 +1,7 @@
 ﻿using GymApp.Visual.Constants;
 using GymApp.Visual.Services;
+using GymApp.Visual.Services.Exercises;
+using GymApp.Visual.Services.Sessions;
 using GymApp.Visual.View;
 using GymApp.Visual.ViewModels;
 using Microsoft.Extensions.Logging;
@@ -23,7 +25,13 @@ namespace GymApp.Visual
     		builder.Logging.AddDebug();
 #endif
 
-            builder.Services.AddHttpClient<GymAppService>(client =>
+            builder.Services.AddHttpClient<IExercisesService, ExercisesService>(client =>
+            {
+                client.BaseAddress = new Uri(DeviceInfo.Platform == DevicePlatform.Android
+                    ? GymAppConstants.BASE_URL_ANDROID
+                    : GymAppConstants.BASE_URL);
+            });
+            builder.Services.AddHttpClient<ISessionsService, SessionsService>(client =>
             {
                 client.BaseAddress = new Uri(DeviceInfo.Platform == DevicePlatform.Android
                     ? GymAppConstants.BASE_URL_ANDROID

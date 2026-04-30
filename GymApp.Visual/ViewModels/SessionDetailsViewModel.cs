@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using GymApp.Shared.Dtos;
-using GymApp.Visual.Services;
+using GymApp.Visual.Services.Exercises;
 
 namespace GymApp.Visual.ViewModels;
 
@@ -8,11 +8,11 @@ namespace GymApp.Visual.ViewModels;
 [QueryProperty(nameof(Session), "Session")]
 public partial class SessionDetailsViewModel : BaseViewModel
 {
-    private GymAppService _service;
+    private IExercisesService _service;
     [ObservableProperty]
     private SessionDto _session;
 
-    public SessionDetailsViewModel(GymAppService service)
+    public SessionDetailsViewModel(IExercisesService service)
     {
         _service = service;
     }

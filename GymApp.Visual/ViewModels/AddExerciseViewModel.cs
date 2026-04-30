@@ -2,22 +2,21 @@
 using CommunityToolkit.Mvvm.Input;
 using GymApp.Shared.Models.Exercises.Dtos;
 using GymApp.Shared.Models.Exercises.Models;
-using GymApp.Visual.Services;
-using GymApp.Visual.View;
+using GymApp.Visual.Services.Exercises;
 using System.Collections.ObjectModel;
 
 namespace GymApp.Visual.ViewModels;
 
 public partial class AddExerciseViewModel : BaseViewModel
 {
-    private readonly GymAppService _service;
+    private readonly IExercisesService _service;
     [ObservableProperty]
     private string _name;
     [ObservableProperty]
     private Equipment _equipment;
     public ObservableCollection<FlagOption> FlagOptions { get; } = new();
 
-    public AddExerciseViewModel(GymAppService service)
+    public AddExerciseViewModel(IExercisesService service)
     {
         Title = "Add Exercise";
         _service = service;

@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using GymApp.Shared.Dtos;
-using GymApp.Visual.Services;
+using GymApp.Visual.Services.Sessions;
 using GymApp.Visual.View;
 using System.Collections.ObjectModel;
 
@@ -8,10 +8,10 @@ namespace GymApp.Visual.ViewModels;
 
 public partial class WorkoutsViewModel : BaseViewModel
 {
-    private GymAppService _service;
+    private ISessionsService _service;
     public ObservableCollection<SessionDto> Sessions { get; private set; } = new();
 
-    public WorkoutsViewModel(GymAppService service)
+    public WorkoutsViewModel(ISessionsService service)
     {
         Title = "Workouts";
         _service = service;
