@@ -21,6 +21,9 @@
                         Grid.ColumnSpan="2"
                         ItemsSource="{Binding Sessions}"
                         SelectionMode="None">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="dto:SessionDto">
                     <Grid>
@@ -28,25 +31,29 @@
                             <TapGestureRecognizer CommandParameter="{Binding .}"
                                                   Command="{Binding Source={RelativeSource 
                                                             AncestorType={x:Type viewmodel:WorkoutsViewModel}},
-                                                            Path=GoToSessionDetailsPageCommand, 
-                                                            x:DataType='viewmodel:WorkoutsViewModel'}"/>
+                                                            Path=GoToSessionDetailsPageCommand}"/>
                         </Grid.GestureRecognizers>
                         <Border BackgroundColor="{StaticResource Gray900}" 
-                                Padding="8,4" 
-                                Margin="0,0,5,5"
-                                StrokeShape="RoundRectangle 20">
-                            <VerticalStackLayout>
-                                <Label Text="{Binding Name}"
-                                       TextColor="{StaticResource Secondary}"
-                                       FontSize="18"
-                                       FontAttributes="Bold"/>
-                                <Label Text="{Binding AppUserDto.UserName, StringFormat='by {0}'}"
-                                       TextColor="{StaticResource White}"
-                                       FontAttributes="Bold"/>
-                                <Label Text="{Binding Date, StringFormat='{0:dd-MM-yyyy}'}"
-                                       TextColor="White"
-                                       FontAttributes="Bold"/>
-                            </VerticalStackLayout>
+                                Stroke="{StaticResource Gray600}"
+                                StrokeThickness="1"
+                                Padding="15" 
+                                Margin="0,0,0,5"
+                                StrokeShape="RoundRectangle 12">
+                            <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, Auto">
+                                <VerticalStackLayout Grid.Column="0" Spacing="2">
+                                    <Label Text="{Binding Name}"
+                                            TextColor="{StaticResource Secondary}"
+                                            FontSize="18"
+                                            FontAttributes="Bold"/>
+                                    <Label Text="{Binding AppUserDto.UserName, StringFormat='by {0}'}"
+                                            FontSize="12"
+                                            TextColor="{StaticResource Gray400}"/>
+                                    <Label Text="{Binding Date, StringFormat='{0:dd-MM-yyyy}'}"
+                                            FontSize="12"
+                                            TextColor="{StaticResource Gray500}"
+                                            FontAttributes="Italic"/>
+                                </VerticalStackLayout>
+                            </Grid>
                         </Border>
                     </Grid>
                 </DataTemplate>

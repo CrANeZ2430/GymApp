@@ -2,21 +2,72 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:GymApp.Visual.ViewModels"
+             xmlns:dto="clr-namespace:GymApp.Shared.Dtos;assembly=GymApp.Shared"
              x:Class="GymApp.Visual.View.SessionDetailsPage"
              x:DataType="viewmodel:SessionDetailsViewModel"
              Title="{Binding Title}">
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="10">
-            <VerticalStackLayout Spacing="10">
-                <Label Text="{Binding Session.Name}" FontAttributes="Bold" 
-                       FontSize="24" TextColor="{StaticResource PrimaryDark}"/>
-                <Label Text="{Binding Session.Date, StringFormat='Date: {0:dd-MM-yyyy}'}" FontAttributes="Bold"/>
-                <Label Text="{Binding Session.Note, StringFormat='Note: {0}'}" FontAttributes="Bold"/>
-            </VerticalStackLayout>
-            <VerticalStackLayout Spacing="10">
-                <Label Text="Exercises" FontAttributes="Bold" 
-                       FontSize="18" TextColor="{StaticResource PrimaryDark}"/>
-            </VerticalStackLayout>
+    <Grid RowDefinitions="Auto, *, Auto" Padding="20" RowSpacing="10">
+
+        <VerticalStackLayout Grid.Row="0" Spacing="10">
+            <Label Text="{Binding Session.Name}" FontAttributes="Bold" 
+               FontSize="24" TextColor="{StaticResource PrimaryDark}"/>
+            <Label Text="{Binding Session.Date, StringFormat='Date: {0:dd-MM-yyyy}'}" FontAttributes="Bold"/>
+            <Label Text="{Binding Session.Note, StringFormat='Note: {0}'}" FontAttributes="Bold"/>
+            <Label Text="Exercises" FontAttributes="Bold" 
+               FontSize="18" TextColor="{StaticResource PrimaryDark}" Margin="0,10,0,0"/>
         </VerticalStackLayout>
-    </ScrollView>
+
+        <CollectionView Grid.Row="1"
+                ItemsSource="{Binding Exercises}"
+                SelectionMode="None"
+                Margin="0,10">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="dto:ExerciseDto">
+                    <Border BackgroundColor="{StaticResource Gray900}" 
+                            Stroke="{StaticResource Gray600}"
+                            StrokeThickness="1"
+                            Padding="15" 
+                            Margin="0,0,0,5"
+                            StrokeShape="RoundRectangle 12">
+                        <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, Auto">
+                            <VerticalStackLayout Grid.Column="0" Spacing="2">
+                                <Label Text="{Binding Name}"
+                                        TextColor="{StaticResource Secondary}"
+                                        FontSize="18"
+                                        FontAttributes="Bold"/>
+                                <Label Text="{Binding MuscleGroups}"
+                                        FontSize="12"
+                                        TextColor="{StaticResource Gray400}"/>
+                                <Label Text="{Binding Equipment}"
+                                        FontSize="12"
+                                        TextColor="{StaticResource Gray500}"
+                                        FontAttributes="Italic"/>
+                            </VerticalStackLayout>
+
+                            <Button Grid.Column="1" 
+                                    Grid.RowSpan="2"
+                                    Text="+"
+                                    FontSize="20"
+                                    HeightRequest="44"
+                                    WidthRequest="44"
+                                    CornerRadius="22"
+                                    VerticalOptions="Center"
+                                    BackgroundColor="{StaticResource Primary}"
+                                    TextColor="White"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SessionDetailsViewModel}}, Path=AddExerciseCommand}"
+                                    CommandParameter="{Binding .}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Grid.Row="2" 
+            Text="Show Exercises"
+            Command="{Binding GetExercisesCommand}"
+            Margin="0,10,0,0"/>
+    </Grid>
 </ContentPage>

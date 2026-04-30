@@ -21,25 +21,33 @@
                         Grid.ColumnSpan="2"
                         ItemsSource="{Binding Exercises}"
                         SelectionMode="None">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="dto:ExerciseDto">
-                    <Grid>
-                        <Border BackgroundColor="{StaticResource Gray900}" 
-                                Padding="8,4" 
-                                Margin="0,0,5,5"
-                                StrokeShape="RoundRectangle 20">
-                            <VerticalStackLayout>
+                    <Border BackgroundColor="{StaticResource Gray900}" 
+                            Stroke="{StaticResource Gray600}"
+                            StrokeThickness="1"
+                            Padding="15" 
+                            Margin="0,0,0,5"
+                            StrokeShape="RoundRectangle 12">
+                        <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, Auto">
+                            <VerticalStackLayout Grid.Column="0" Spacing="2">
                                 <Label Text="{Binding Name}"
-                                       TextColor="{StaticResource Secondary}"
-                                       FontSize="18"
-                                       FontAttributes="Bold"/>
-                                <Label Text="{Binding MuscleGroups, StringFormat='Muscles: {0}'}"
-                                       TextColor="{StaticResource Gray100}"/>
-                                <Label Text="{Binding Equipment, StringFormat='Equipment: {0}'}"
-                                       TextColor="{StaticResource Gray100}"/>
+                                        TextColor="{StaticResource Secondary}"
+                                        FontSize="18"
+                                        FontAttributes="Bold"/>
+                                <Label Text="{Binding MuscleGroups}"
+                                        FontSize="12"
+                                        TextColor="{StaticResource Gray400}"/>
+                                <Label Text="{Binding Equipment}"
+                                        FontSize="12"
+                                        TextColor="{StaticResource Gray500}"
+                                        FontAttributes="Italic"/>
                             </VerticalStackLayout>
-                        </Border>
-                    </Grid>
+                        </Grid>
+                    </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

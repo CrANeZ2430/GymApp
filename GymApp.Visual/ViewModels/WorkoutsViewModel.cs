@@ -28,12 +28,12 @@ public partial class WorkoutsViewModel : BaseViewModel
             IsBusy = true;
             var sessions = await _service.GetSessionsAsync(ct);
 
-            foreach(var session in sessions)
+            foreach (var session in sessions)
             {
                 if (!Sessions.Any(s => s.SessionId == session.SessionId))
                     Sessions.Add(session);
             }
-            
+
         }
         catch (Exception ex)
         {
@@ -76,7 +76,7 @@ public partial class WorkoutsViewModel : BaseViewModel
         {
             IsBusy = true;
             await Shell.Current.GoToAsync(nameof(SessionDetailsPage), true,
-                new Dictionary<string, object>
+                new Dictionary<string, object?>
                 {
                     { "Session", session }
                 });
