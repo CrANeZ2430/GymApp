@@ -6,9 +6,9 @@ namespace GymApp.Visual.ViewModels;
 public partial class BaseViewModel : ObservableObject
 {
     [ObservableProperty]
-    private bool isBusy;
+    private bool _isBusy;
     [ObservableProperty]
-    private string title;
+    private string _title;
 
     protected async Task DisplayAlertAsync(Exception ex)
     {

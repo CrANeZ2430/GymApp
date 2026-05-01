@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using GymApp.Shared.Dtos;
 using GymApp.Visual.Services.Exercises;
-using GymApp.Visual.View;
+using GymApp.Visual.Views;
 using System.Collections.ObjectModel;
 
 namespace GymApp.Visual.ViewModels;
@@ -50,10 +50,10 @@ public partial class ExercisesViewModel : BaseViewModel
         if (IsBusy)
             return;
 
-        try 
+        try
         {
             IsBusy = true;
-            await Shell.Current.GoToAsync(nameof(AddExercisePage), true); 
+            await Shell.Current.GoToAsync(nameof(AddExercisePage), true);
         }
         catch (Exception ex)
         {

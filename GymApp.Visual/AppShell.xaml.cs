@@ -1,4 +1,4 @@
-﻿using GymApp.Visual.View;
+﻿using GymApp.Visual.Views;
 
 namespace GymApp.Visual;
 

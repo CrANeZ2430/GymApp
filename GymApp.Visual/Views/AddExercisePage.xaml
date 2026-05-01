@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:GymApp.Shared.Models.Exercises.Models;assembly=GymApp.Shared"
              xmlns:viewmodel="clr-namespace:GymApp.Visual.ViewModels"
-             x:Class="GymApp.Visual.View.AddExercisePage"
+             x:Class="GymApp.Visual.Views.AddExercisePage"
              x:DataType="viewmodel:AddExerciseViewModel"
              Title="{Binding Title}">
     

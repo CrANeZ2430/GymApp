@@ -1,7 +1,9 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Extensions;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using GymApp.Shared.Dtos;
 using GymApp.Visual.Services.Exercises;
+using GymApp.Visual.Views;
 using System.Collections.ObjectModel;
 
 namespace GymApp.Visual.ViewModels;
@@ -11,13 +13,15 @@ namespace GymApp.Visual.ViewModels;
 public partial class SessionDetailsViewModel : BaseViewModel
 {
     private IExercisesService _service;
+    private AddWorkoutLogViewModel _popupViewModel;
     [ObservableProperty]
     private SessionDto? _session;
     public ObservableCollection<ExerciseDto> Exercises { get; private set; } = new();
 
-    public SessionDetailsViewModel(IExercisesService service)
+    public SessionDetailsViewModel(IExercisesService service, AddWorkoutLogViewModel popupViewModel)
     {
         _service = service;
+        _popupViewModel = popupViewModel;
     }
 
     [RelayCommand]
@@ -36,6 +40,27 @@ public partial class SessionDetailsViewModel : BaseViewModel
                 if (!Exercises.Any(e => e.ExerciseId == exercise.ExerciseId))
                     Exercises.Add(exercise);
             }
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlertAsync(ex);
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
+
+    [RelayCommand]
+    private async Task ShowAddWorkoutLogPopupAsync(SessionDetailsPage page)
+    {
+        if (IsBusy)
+            return;
+
+        try
+        {
+            IsBusy = true;
+            await page.ShowPopupAsync(new AddWorkoutLogPopup(_popupViewModel));
         }
         catch (Exception ex)
         {

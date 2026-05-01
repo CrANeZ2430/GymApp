@@ -1,9 +1,10 @@
-﻿using GymApp.Visual.Constants;
-using GymApp.Visual.Services;
+﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Services;
+using GymApp.Visual.Constants;
 using GymApp.Visual.Services.Exercises;
 using GymApp.Visual.Services.Sessions;
-using GymApp.Visual.View;
 using GymApp.Visual.ViewModels;
+using GymApp.Visual.Views;
 using Microsoft.Extensions.Logging;
 
 namespace GymApp.Visual
@@ -15,6 +16,7 @@ namespace GymApp.Visual
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -22,7 +24,7 @@ namespace GymApp.Visual
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             builder.Services.AddHttpClient<IExercisesService, ExercisesService>(client =>
@@ -55,6 +57,11 @@ namespace GymApp.Visual
 
             builder.Services.AddTransient<SessionDetailsPage>();
             builder.Services.AddTransient<SessionDetailsViewModel>();
+
+            builder.Services.AddTransient<AddWorkoutLogPopup>();
+            builder.Services.AddTransient<AddWorkoutLogViewModel>();
+
+            builder.Services.AddSingleton<IPopupService, PopupService>();
 
             return builder.Build();
         }

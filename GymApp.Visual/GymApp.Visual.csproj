@@ -66,6 +66,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="14.1.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="10.0.5" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.60" />
@@ -77,31 +78,34 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="View\AddExercisePage.xaml.cs">
+	  <Compile Update="Views\AddExercisePage.xaml.cs">
 	    <DependentUpon>AddExercisePage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="View\MainPage.xaml.cs">
+	  <Compile Update="Views\MainPage.xaml.cs">
 	    <DependentUpon>MainPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="View\ExercisesPage.xaml.cs">
+	  <Compile Update="Views\ExercisesPage.xaml.cs">
 	    <DependentUpon>ExercisesPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="View\AddExercisePage.xaml">
+	  <MauiXaml Update="Views\AddExercisePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\AddSessionPage.xaml">
+	  <MauiXaml Update="Views\AddSessionPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\MainPage.xaml">
+	  <MauiXaml Update="Views\AddWorkoutLogPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\SessionDetailsPage.xaml">
+	  <MauiXaml Update="Views\MainPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\WorkoutsPage.xaml">
+	  <MauiXaml Update="Views\SessionDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\WorkoutsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
