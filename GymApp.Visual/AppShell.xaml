@@ -19,15 +19,15 @@
     </Shell.FlyoutHeader>
 
     <ShellContent Title="Home"
-                  ContentTemplate="{DataTemplate view:MainPage}"
+                  ContentTemplate="{DataTemplate view:Main.MainPage}"
                   Route="MainPage" />
 
     <FlyoutItem Title="Exercises" Icon="dumbell.png">
-        <ShellContent ContentTemplate="{DataTemplate view:ExercisesPage}" />
+        <ShellContent ContentTemplate="{DataTemplate view:Exercises.ExercisesPage}" />
     </FlyoutItem>
 
     <FlyoutItem Title="Workouts" Icon="calendar.png">
-        <ShellContent ContentTemplate="{DataTemplate view:WorkoutsPage}" />
+        <ShellContent ContentTemplate="{DataTemplate view:Sessions.WorkoutsPage}" />
     </FlyoutItem>
     
 </Shell>

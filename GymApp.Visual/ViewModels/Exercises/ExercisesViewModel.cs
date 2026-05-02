@@ -1,9 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using GymApp.Shared.Dtos;
 using GymApp.Visual.Services.Exercises;
-using GymApp.Visual.Views;
 using System.Collections.ObjectModel;
 using GymApp.Visual.ViewModels.Common;
+using GymApp.Visual.Views.Exercises;
 
 namespace GymApp.Visual.ViewModels.Exercises;
 

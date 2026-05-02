@@ -28,16 +28,8 @@ namespace GymApp.Visual
 #endif
 
             builder.Services.RegisterServices();
-
             builder.Services.RegisterViewModels();
-
-            builder.Services.AddSingleton<MainPage>();
-            builder.Services.AddTransient<ExercisesPage>();
-            builder.Services.AddTransient<AddExercisePage>();
-            builder.Services.AddTransient<WorkoutsPage>();
-            builder.Services.AddTransient<AddSessionPage>();
-            builder.Services.AddTransient<SessionDetailsPage>();
-            builder.Services.AddTransient<AddWorkoutLogPopup>();
+            builder.Services.RegisterViews();
 
             builder.Services.AddSingleton<IPopupService, PopupService>();
 

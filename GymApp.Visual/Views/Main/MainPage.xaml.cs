@@ -1,6 +1,6 @@
 using GymApp.Visual.ViewModels.Main;
 
-namespace GymApp.Visual.Views;
+namespace GymApp.Visual.Views.Main;
 
 public partial class MainPage : ContentPage
 {

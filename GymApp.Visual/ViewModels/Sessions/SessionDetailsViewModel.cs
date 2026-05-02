@@ -5,7 +5,7 @@ using GymApp.Shared.Dtos;
 using GymApp.Visual.Services.Exercises;
 using GymApp.Visual.ViewModels.Common;
 using GymApp.Visual.ViewModels.WorkoutLogs;
-using GymApp.Visual.Views;
+using GymApp.Visual.Views.WorkoutLogs;
 using System.Collections.ObjectModel;
 
 namespace GymApp.Visual.ViewModels.Sessions;

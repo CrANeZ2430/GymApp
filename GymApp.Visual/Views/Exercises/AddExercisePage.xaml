@@ -4,7 +4,7 @@
              xmlns:model="clr-namespace:GymApp.Shared.Models.Exercises.Models;assembly=GymApp.Shared"
              xmlns:viewmodel="clr-namespace:GymApp.Visual.ViewModels"
              xmlns:common="clr-namespace:GymApp.Visual.Common"
-             x:Class="GymApp.Visual.Views.AddExercisePage"
+             x:Class="GymApp.Visual.Views.Exercises.AddExercisePage"
              x:DataType="viewmodel:Exercises.AddExerciseViewModel"
              Title="{Binding Title}">
     

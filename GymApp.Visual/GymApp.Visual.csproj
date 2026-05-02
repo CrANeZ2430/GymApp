@@ -78,34 +78,34 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\AddExercisePage.xaml.cs">
+	  <Compile Update="Views\Exercises\AddExercisePage.xaml.cs">
 	    <DependentUpon>AddExercisePage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\MainPage.xaml.cs">
+	  <Compile Update="Views\Main\MainPage.xaml.cs">
 	    <DependentUpon>MainPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\ExercisesPage.xaml.cs">
+	  <Compile Update="Views\Exercises\ExercisesPage.xaml.cs">
 	    <DependentUpon>ExercisesPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\AddExercisePage.xaml">
+	  <MauiXaml Update="Views\Exercises\AddExercisePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\AddSessionPage.xaml">
+	  <MauiXaml Update="Views\Sessions\AddSessionPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\AddWorkoutLogPopup.xaml">
+	  <MauiXaml Update="Views\WorkoutLogs\AddWorkoutLogPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\MainPage.xaml">
+	  <MauiXaml Update="Views\Main\MainPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\SessionDetailsPage.xaml">
+	  <MauiXaml Update="Views\Sessions\SessionDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\WorkoutsPage.xaml">
+	  <MauiXaml Update="Views\Sessions\WorkoutsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

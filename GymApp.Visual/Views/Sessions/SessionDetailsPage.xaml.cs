@@ -1,6 +1,6 @@
 using GymApp.Visual.ViewModels.Sessions;
 
-namespace GymApp.Visual.Views;
+namespace GymApp.Visual.Views.Sessions;
 
 public partial class SessionDetailsPage : ContentPage
 {

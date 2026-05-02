@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
              xmlns:viewmodel="clr-namespace:GymApp.Visual.ViewModels"
-             x:Class="GymApp.Visual.Views.AddWorkoutLogPopup"
+             x:Class="GymApp.Visual.Views.WorkoutLogs.AddWorkoutLogPopup"
              x:DataType="viewmodel:WorkoutLogs.AddWorkoutLogViewModel">
     <VerticalStackLayout>
         <Label 

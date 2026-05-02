@@ -4,7 +4,7 @@
              xmlns:viewmodel="clr-namespace:GymApp.Visual.ViewModels"
              xmlns:view="clr-namespace:GymApp.Visual.Views"
              xmlns:dto="clr-namespace:GymApp.Shared.Dtos;assembly=GymApp.Shared"
-             x:Class="GymApp.Visual.Views.SessionDetailsPage"
+             x:Class="GymApp.Visual.Views.Sessions.SessionDetailsPage"
              x:DataType="viewmodel:Sessions.SessionDetailsViewModel"
              Title="{Binding Title}">
     <Grid RowDefinitions="Auto, *, Auto" Padding="20" RowSpacing="10">
