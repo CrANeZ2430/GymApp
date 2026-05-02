@@ -3,8 +3,9 @@ using GymApp.Shared.Dtos;
 using GymApp.Visual.Services.Exercises;
 using GymApp.Visual.Views;
 using System.Collections.ObjectModel;
+using GymApp.Visual.ViewModels.Common;
 
-namespace GymApp.Visual.ViewModels;
+namespace GymApp.Visual.ViewModels.Exercises;
 
 public partial class ExercisesViewModel : BaseViewModel
 {
@@ -26,7 +27,7 @@ public partial class ExercisesViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            var exercises = await _service.GetExercisesAsync(ct);
+            var exercises = await _service.GetAsync(ct);
 
             foreach (var exercise in exercises)
             {

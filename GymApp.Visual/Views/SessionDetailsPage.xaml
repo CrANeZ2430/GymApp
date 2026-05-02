@@ -5,7 +5,7 @@
              xmlns:view="clr-namespace:GymApp.Visual.Views"
              xmlns:dto="clr-namespace:GymApp.Shared.Dtos;assembly=GymApp.Shared"
              x:Class="GymApp.Visual.Views.SessionDetailsPage"
-             x:DataType="viewmodel:SessionDetailsViewModel"
+             x:DataType="viewmodel:Sessions.SessionDetailsViewModel"
              Title="{Binding Title}">
     <Grid RowDefinitions="Auto, *, Auto" Padding="20" RowSpacing="10">
 
@@ -59,10 +59,8 @@
                                     BackgroundColor="{StaticResource Primary}"
                                     TextColor="White"
                                     Command="{Binding Source={RelativeSource 
-                                            AncestorType={x:Type viewmodel:SessionDetailsViewModel}}, 
-                                            Path=ShowAddWorkoutLogPopupCommand}"
-                                    CommandParameter="{Binding Source={RelativeSource 
-                                                    AncestorType={x:Type view:SessionDetailsPage}}}"/>
+                                            AncestorType={x:Type viewmodel:Sessions.SessionDetailsViewModel}}, 
+                                            Path=ShowAddWorkoutLogPopupCommand}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

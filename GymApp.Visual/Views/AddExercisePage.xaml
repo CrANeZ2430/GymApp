@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:GymApp.Shared.Models.Exercises.Models;assembly=GymApp.Shared"
              xmlns:viewmodel="clr-namespace:GymApp.Visual.ViewModels"
+             xmlns:common="clr-namespace:GymApp.Visual.Common"
              x:Class="GymApp.Visual.Views.AddExercisePage"
-             x:DataType="viewmodel:AddExerciseViewModel"
+             x:DataType="viewmodel:Exercises.AddExerciseViewModel"
              Title="{Binding Title}">
     
     <ScrollView>
@@ -27,7 +28,7 @@
             <Label Text="Target Muscles" FontAttributes="Bold"/>
             <VerticalStackLayout BindableLayout.ItemsSource="{Binding FlagOptions}">
                 <BindableLayout.ItemTemplate>
-                    <DataTemplate x:DataType="viewmodel:FlagOption">
+                    <DataTemplate x:DataType="common:FlagOption">
                         <HorizontalStackLayout Spacing="10">
                             <CheckBox IsChecked="{Binding IsSelected}"/>
                             <Label Text="{Binding Name}" VerticalOptions="Center"/>

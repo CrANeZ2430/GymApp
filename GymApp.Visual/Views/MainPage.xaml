@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:GymApp.Visual.ViewModels"
              x:Class="GymApp.Visual.Views.MainPage"
-             x:DataType="viewmodel:MainViewModel"
+             x:DataType="viewmodel:Main.MainViewModel"
              Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>

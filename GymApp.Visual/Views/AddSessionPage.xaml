@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmode="clr-namespace:GymApp.Visual.ViewModels"
              x:Class="GymApp.Visual.Views.AddSessionPage"
-             x:DataType="viewmode:AddSessionViewModel"
+             x:DataType="viewmode:Sessions.AddSessionViewModel"
              Title="{Binding Title}">
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="10">

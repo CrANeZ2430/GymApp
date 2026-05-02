@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System.Diagnostics;
 
-namespace GymApp.Visual.ViewModels;
+namespace GymApp.Visual.ViewModels.Common;
 
 public partial class BaseViewModel : ObservableObject
 {

@@ -3,10 +3,12 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using GymApp.Shared.Dtos;
 using GymApp.Visual.Services.Exercises;
+using GymApp.Visual.ViewModels.Common;
+using GymApp.Visual.ViewModels.WorkoutLogs;
 using GymApp.Visual.Views;
 using System.Collections.ObjectModel;
 
-namespace GymApp.Visual.ViewModels;
+namespace GymApp.Visual.ViewModels.Sessions;
 
 //"Session" should be the same as in the WorkoutsViewModel in GoToSessionDetailsPageAsync method
 [QueryProperty(nameof(Session), "Session")]
@@ -33,7 +35,7 @@ public partial class SessionDetailsViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            var exercises = await _service.GetExercisesAsync(ct);
+            var exercises = await _service.GetAsync(ct);
 
             foreach (var exercise in exercises)
             {
@@ -52,7 +54,7 @@ public partial class SessionDetailsViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    private async Task ShowAddWorkoutLogPopupAsync(SessionDetailsPage page)
+    private async Task ShowAddWorkoutLogPopupAsync()
     {
         if (IsBusy)
             return;
@@ -60,7 +62,7 @@ public partial class SessionDetailsViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            await page.ShowPopupAsync(new AddWorkoutLogPopup(_popupViewModel));
+            await Shell.Current.CurrentPage.ShowPopupAsync(new AddWorkoutLogPopup(_popupViewModel));
         }
         catch (Exception ex)
         {

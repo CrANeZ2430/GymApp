@@ -1,4 +1,4 @@
-using GymApp.Visual.ViewModels;
+using GymApp.Visual.ViewModels.Sessions;
 
 namespace GymApp.Visual.Views;
 

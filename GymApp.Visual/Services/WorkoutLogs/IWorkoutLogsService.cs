@@ -5,6 +5,6 @@ namespace GymApp.Visual.Services.WorkoutLogs;
 
 public interface IWorkoutLogsService
 {
-    Task<WorkoutLogDto[]> GetWorkoutLogForSessionAsync(Guid SessionId, CancellationToken ct = default);
-    Task<bool> CreateWorkoutLogAsync(CreateWorkoutLogDto dto, CancellationToken ct = default);
+    Task<IEnumerable<WorkoutLogDto>> GetFromSessionByIdAsync(Guid sessionId, CancellationToken ct = default);
+    Task<bool> CreateAsync(CreateWorkoutLogDto dto, CancellationToken ct = default);
 }

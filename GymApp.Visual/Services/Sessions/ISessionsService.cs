@@ -5,6 +5,6 @@ namespace GymApp.Visual.Services.Sessions;
 
 public interface ISessionsService
 {
-    Task<SessionDto[]> GetSessionsAsync(CancellationToken ct = default);
-    Task<bool> CreateSessionAsync(CreateSessionDto dto, CancellationToken ct = default);
+    Task<IEnumerable<SessionDto>> GetAsync(CancellationToken ct = default);
+    Task<bool> CreateAsync(CreateSessionDto dto, CancellationToken ct = default);
 }

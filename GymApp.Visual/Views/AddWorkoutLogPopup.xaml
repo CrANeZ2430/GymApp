@@ -4,7 +4,7 @@
              xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
              xmlns:viewmodel="clr-namespace:GymApp.Visual.ViewModels"
              x:Class="GymApp.Visual.Views.AddWorkoutLogPopup"
-             x:DataType="viewmodel:AddWorkoutLogViewModel">
+             x:DataType="viewmodel:WorkoutLogs.AddWorkoutLogViewModel">
     <VerticalStackLayout>
         <Label 
             Text="Welcome to .NET MAUI!"

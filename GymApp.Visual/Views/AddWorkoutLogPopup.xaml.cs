@@ -1,5 +1,5 @@
 using CommunityToolkit.Maui.Views;
-using GymApp.Visual.ViewModels;
+using GymApp.Visual.ViewModels.WorkoutLogs;
 
 namespace GymApp.Visual.Views;
 

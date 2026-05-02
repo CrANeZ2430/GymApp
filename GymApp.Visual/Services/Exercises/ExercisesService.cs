@@ -1,6 +1,7 @@
 ﻿using GymApp.Shared.Dtos;
 using GymApp.Shared.Models.Exercises.Dtos;
 using GymApp.Visual.Constants;
+using GymApp.Visual.Services.Common;
 using System.Diagnostics;
 using System.Net.Http.Json;
 
@@ -8,7 +9,7 @@ namespace GymApp.Visual.Services.Exercises;
 
 public class ExercisesService(HttpClient client) : BaseService(client), IExercisesService
 {
-    public async Task<bool> CreateExerciseAsync(CreateExerciseDto dto, CancellationToken ct = default)
+    public async Task<bool> CreateAsync(CreateExerciseDto dto, CancellationToken ct = default)
     {
         try
         {
@@ -23,18 +24,18 @@ public class ExercisesService(HttpClient client) : BaseService(client), IExercis
         }
     }
 
-    public async Task<ExerciseDto[]> GetExercisesAsync(CancellationToken ct = default)
+    public async Task<IEnumerable<ExerciseDto>> GetAsync(CancellationToken ct = default)
     {
         try
         {
-            var exercises = await _client.GetFromJsonAsync<ExerciseDto[]>(
+            var exercises = await _client.GetFromJsonAsync<IEnumerable<ExerciseDto>>(
                 GymAppConstants.EXERCISES_ENDPOINT, _options, ct);
-            return exercises ?? Array.Empty<ExerciseDto>();
+            return exercises ?? Enumerable.Empty<ExerciseDto>();
         }
         catch (Exception ex)
         {
             Debug.WriteLine($"API Error: {ex.Message}");
-            return Array.Empty<ExerciseDto>();
+            return Enumerable.Empty<ExerciseDto>();
         }
     }
 }

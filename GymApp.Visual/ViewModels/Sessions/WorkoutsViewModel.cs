@@ -1,10 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using GymApp.Shared.Dtos;
 using GymApp.Visual.Services.Sessions;
+using GymApp.Visual.ViewModels.Common;
 using GymApp.Visual.Views;
 using System.Collections.ObjectModel;
 
-namespace GymApp.Visual.ViewModels;
+namespace GymApp.Visual.ViewModels.Sessions;
 
 public partial class WorkoutsViewModel : BaseViewModel
 {
@@ -26,7 +27,7 @@ public partial class WorkoutsViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            var sessions = await _service.GetSessionsAsync(ct);
+            var sessions = await _service.GetAsync(ct);
 
             foreach (var session in sessions)
             {

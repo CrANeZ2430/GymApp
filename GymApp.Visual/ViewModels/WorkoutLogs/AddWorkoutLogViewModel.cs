@@ -1,7 +1,8 @@
 ﻿using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.Input;
+using GymApp.Visual.ViewModels.Common;
 
-namespace GymApp.Visual.ViewModels;
+namespace GymApp.Visual.ViewModels.WorkoutLogs;
 
 public partial class AddWorkoutLogViewModel(IPopupService popupService) : BaseViewModel
 {

@@ -4,8 +4,10 @@ using GymApp.Shared.Models.Exercises.Dtos;
 using GymApp.Shared.Models.Exercises.Models;
 using GymApp.Visual.Services.Exercises;
 using System.Collections.ObjectModel;
+using GymApp.Visual.ViewModels.Common;
+using GymApp.Visual.Common;
 
-namespace GymApp.Visual.ViewModels;
+namespace GymApp.Visual.ViewModels.Exercises;
 
 public partial class AddExerciseViewModel : BaseViewModel
 {
@@ -34,7 +36,7 @@ public partial class AddExerciseViewModel : BaseViewModel
             IsBusy = true;
 
             var dto = new CreateExerciseDto(Name, GetFinalResult(), Equipment);
-            await _service.CreateExerciseAsync(dto, ct);
+            await _service.CreateAsync(dto, ct);
 
             await Shell.Current.DisplayAlertAsync("Success", "Exercise created successfully!", "OK");
             await Shell.Current.GoToAsync("..", true);

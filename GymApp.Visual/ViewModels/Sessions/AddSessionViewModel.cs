@@ -2,8 +2,9 @@
 using CommunityToolkit.Mvvm.Input;
 using GymApp.Shared.Models.Sessions.Dtos;
 using GymApp.Visual.Services.Sessions;
+using GymApp.Visual.ViewModels.Common;
 
-namespace GymApp.Visual.ViewModels;
+namespace GymApp.Visual.ViewModels.Sessions;
 
 public partial class AddSessionViewModel : BaseViewModel
 {
@@ -35,7 +36,7 @@ public partial class AddSessionViewModel : BaseViewModel
             IsBusy = true;
 
             var dto = new CreateSessionDto(_userId, Name, Date.ToUniversalTime(), Note, IsDefault);
-            await _service.CreateSessionAsync(dto, ct);
+            await _service.CreateAsync(dto, ct);
 
             await Shell.Current.DisplayAlertAsync("Success", "Session created successfully!", "OK");
             await Shell.Current.GoToAsync("..", true);

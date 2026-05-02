@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace GymApp.Visual.ViewModels;
+namespace GymApp.Visual.Common;
 
 public partial class FlagOption : ObservableObject
 {

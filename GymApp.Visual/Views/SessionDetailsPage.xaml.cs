@@ -1,4 +1,4 @@
-using GymApp.Visual.ViewModels;
+using GymApp.Visual.ViewModels.Sessions;
 
 namespace GymApp.Visual.Views;
 
@@ -9,9 +9,4 @@ public partial class SessionDetailsPage : ContentPage
         InitializeComponent();
         BindingContext = viewModel;
     }
-
-    //private void ShowWLPopup(object sender, EventArgs e)
-    //{
-    //    this.ShowPopup(new AddWorkoutLogPopup());
-    //}
 }

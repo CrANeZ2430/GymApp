@@ -5,6 +5,6 @@ namespace GymApp.Visual.Services.Exercises;
 
 public interface IExercisesService
 {
-    Task<ExerciseDto[]> GetExercisesAsync(CancellationToken ct = default);
-    Task<bool> CreateExerciseAsync(CreateExerciseDto dto, CancellationToken ct = default);
+    Task<IEnumerable<ExerciseDto>> GetAsync(CancellationToken ct = default);
+    Task<bool> CreateAsync(CreateExerciseDto dto, CancellationToken ct = default);
 }
