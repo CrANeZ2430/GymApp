@@ -1,8 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Services;
 using GymApp.Visual.Services;
-using GymApp.Visual.Services.Exercises;
-using GymApp.Visual.Services.Sessions;
 using GymApp.Visual.ViewModels;
 using GymApp.Visual.Views;
 using Microsoft.Extensions.Logging;
