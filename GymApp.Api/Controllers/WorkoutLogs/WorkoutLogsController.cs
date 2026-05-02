@@ -23,22 +23,27 @@ public class WorkoutLogsController(
         var workoutLogDtos = workoutLogs.Select(wl =>
             new WorkoutLogDto(
                 wl.WorkoutLogId,
-                new ExerciseDto(
-                    wl.Exercise.ExerciseId,
-                    wl.Exercise.Name,
-                    wl.Exercise.MuscleGroups,
-                    wl.Exercise.Equipment),
-                new SessionDto(
-                    wl.Session.SessionId,
-                    new AppUserDto(
-                        wl.Session.AppUser.AppUserId,
-                        wl.Session.AppUser.UserName,
-                        wl.Session.AppUser.Email,
-                        wl.Session.AppUser.Age),
-                    wl.Session.Name,
-                    wl.Session.Date,
-                    wl.Session.Note,
-                    wl.Session.IsDefault),
+                wl.ExerciseId,
+                wl.SessionId,
+                wl.Weight,
+                wl.Sets,
+                wl.Reps,
+                wl.Duration,
+                wl.RestTime));
+
+        return Ok(workoutLogDtos);
+    }
+
+    [HttpGet("session/{sessionId:guid}")]
+    public async Task<IActionResult> GetWorkoutLogsFromSessionById(
+        [FromRoute] Guid sessionId,
+        CancellationToken ct = default)
+    {
+        var workoutLogs = await workoutLogsRepository.GetFromSessionByIdAsync(sessionId, ct);
+        var workoutLogDtos = workoutLogs.Select(wl => new WorkoutLogDto(
+                wl.WorkoutLogId,
+                wl.ExerciseId,
+                wl.SessionId,
                 wl.Weight,
                 wl.Sets,
                 wl.Reps,
@@ -56,22 +61,8 @@ public class WorkoutLogsController(
         var workoutLog = await workoutLogsRepository.GetByIdAsync(workoutLogId, ct);
         var workoutLogDto = new WorkoutLogDto(
                 workoutLog.WorkoutLogId,
-                new ExerciseDto(
-                    workoutLog.Exercise.ExerciseId,
-                    workoutLog.Exercise.Name,
-                    workoutLog.Exercise.MuscleGroups,
-                    workoutLog.Exercise.Equipment),
-                new SessionDto(
-                    workoutLog.Session.SessionId,
-                    new AppUserDto(
-                        workoutLog.Session.AppUser.AppUserId,
-                        workoutLog.Session.AppUser.UserName,
-                        workoutLog.Session.AppUser.Email,
-                        workoutLog.Session.AppUser.Age),
-                    workoutLog.Session.Name,
-                    workoutLog.Session.Date,
-                    workoutLog.Session.Note,
-                    workoutLog.Session.IsDefault),
+                workoutLog.ExerciseId,
+                workoutLog.SessionId,
                 workoutLog.Weight,
                 workoutLog.Sets,
                 workoutLog.Reps,

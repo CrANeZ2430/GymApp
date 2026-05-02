@@ -6,7 +6,7 @@ namespace GymApp.Api.Repositories.Sessions;
 
 public class SessionsRepository(GymAppDbContext dbContext) : ISessionsRepository
 {
-    public async Task<Session[]> GetAsync(CancellationToken ct = default)
+    public async Task<IEnumerable<Session>> GetAsync(CancellationToken ct = default)
     {
         return await dbContext.Sessions
             .Include(s => s.AppUser)
@@ -22,7 +22,7 @@ public class SessionsRepository(GymAppDbContext dbContext) : ISessionsRepository
             //.Include(s => s.WorkoutLogs)
             .AsNoTracking()
             .FirstOrDefaultAsync(s => s.SessionId == sessionsId, ct);
-            
+
     }
 
     public async Task CreateAsync(Session session, CancellationToken ct = default)

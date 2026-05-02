@@ -2,8 +2,8 @@
 
 public record WorkoutLogDto(
     Guid WorkoutLogId,
-    ExerciseDto Exercise,
-    SessionDto Session,
+    Guid ExerciseId,
+    Guid SessionId,
     float Weight,
     int Sets,
     int? Reps,

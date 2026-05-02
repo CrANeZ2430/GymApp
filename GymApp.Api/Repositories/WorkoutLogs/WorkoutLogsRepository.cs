@@ -6,22 +6,29 @@ namespace GymApp.Api.Repositories.WorkoutLogs;
 
 public class WorkoutLogsRepository(GymAppDbContext dbContext) : IWorkoutLogsRepository
 {
-    public async Task<WorkoutLog[]> GetAsync(CancellationToken ct = default)
+    public async Task<IEnumerable<WorkoutLog>> GetAsync(CancellationToken ct = default)
     {
         return await dbContext.WorkoutLogs
-            .Include(ws => ws.Exercise)
-            .Include(ws => ws.Session)
-                .ThenInclude(s => s.AppUser)
+            //.Include(ws => ws.Exercise)
+            //.Include(ws => ws.Session)
+                //.ThenInclude(s => s.AppUser)
             .AsNoTracking()
+            .ToArrayAsync(ct);
+    }
+
+    public async Task<IEnumerable<WorkoutLog>> GetFromSessionByIdAsync(Guid sessionId, CancellationToken ct = default)
+    {
+        return await dbContext.WorkoutLogs
+            .Where(w => w.SessionId == sessionId)
             .ToArrayAsync(ct);
     }
 
     public async Task<WorkoutLog?> GetByIdAsync(Guid workoutLogId, CancellationToken ct = default)
     {
         return await dbContext.WorkoutLogs
-            .Include(ws => ws.Exercise)
-            .Include(ws => ws.Session)
-                .ThenInclude(s => s.AppUser)
+            //.Include(ws => ws.Exercise)
+            //.Include(ws => ws.Session)
+                //.ThenInclude(s => s.AppUser)
             .AsNoTracking()
             .FirstOrDefaultAsync(ws => ws.WorkoutLogId == workoutLogId, ct);
     }

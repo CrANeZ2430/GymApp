@@ -6,7 +6,7 @@ namespace GymApp.Api.Repositories.Exercises;
 
 public class ExercisesRepository(GymAppDbContext dbContext) : IExercisesRepository
 {
-    public async Task<Exercise[]> GetAsync(CancellationToken ct = default)
+    public async Task<IEnumerable<Exercise>> GetAsync(CancellationToken ct = default)
     {
         return await dbContext.Exercises
             //.Include(e => e.WorkoutLogs)

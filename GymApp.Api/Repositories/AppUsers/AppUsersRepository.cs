@@ -6,22 +6,22 @@ namespace GymApp.Api.Repositories.AppUsers;
 
 public class AppUsersRepository(GymAppDbContext dbContext) : IAppUsersRepository
 {
-    public Task<AppUser[]> GetAsync(CancellationToken ct = default)
+    public async Task<IEnumerable<AppUser>> GetAsync(CancellationToken ct = default)
     {
-        return dbContext.AppUsers
+        return await dbContext.AppUsers
             .Include(au => au.Sessions)
             .AsNoTracking()
             .ToArrayAsync(ct);
     }
 
-    public Task<AppUser?> GetByIdAsync(Guid appUserId, CancellationToken ct = default)
+    public async Task<AppUser?> GetByIdAsync(Guid appUserId, CancellationToken ct = default)
     {
-        return dbContext.AppUsers
+        return await dbContext.AppUsers
             .Include(au => au.Sessions)
             .AsNoTracking()
             .FirstOrDefaultAsync(au => au.AppUserId == appUserId, ct);
     }
-    
+
     public async Task CreateAsync(AppUser appUser, CancellationToken ct = default)
     {
         await dbContext.AddAsync(appUser, ct);
