@@ -12,7 +12,7 @@
 
     <Border Stroke="{StaticResource Primary}" 
             StrokeThickness="2"
-            StrokeShape="RoundRectangle 20" 
+            StrokeShape="RoundRectangle 12" 
             BackgroundColor="{StaticResource Gray900}"
             HorizontalOptions="Center"
             VerticalOptions="Center">
@@ -136,7 +136,8 @@
                 <Button Grid.Row="5" 
                         Grid.Column="0"
                         Text="Save"
-                        TextColor="White"/>
+                        TextColor="White"
+                        Command="{Binding SaveWorkoutLogCommand}"/>
 
                 <Button Grid.Row="5"
                         Grid.Column="1"

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using GymApp.Shared.Models.WorkoutLogs.Dtos;
 using GymApp.Visual.Services.WorkoutLogs;
 using GymApp.Visual.ViewModels.Common;
 
@@ -10,6 +11,7 @@ public partial class AddWorkoutLogViewModel : BaseViewModel
 {
     private IPopupService _popupService;
     private IWorkoutLogsService _workoutLogsService;
+
     [ObservableProperty]
     private float _weight;
     [ObservableProperty]
@@ -20,6 +22,9 @@ public partial class AddWorkoutLogViewModel : BaseViewModel
     private int _duration;
     [ObservableProperty]
     private int _restTime;
+
+    public Guid SessionId { get; set; }
+    public Guid ExerciseId { get; set; }
 
     public List<string> TrackingTypes { get; } = new() { "Reps", "Duration" };
     [ObservableProperty]
@@ -39,7 +44,38 @@ public partial class AddWorkoutLogViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    private async Task CloseAddWorkoutLogPopup(CancellationToken ct = default)
+    private async Task SaveWorkoutLogAsync(CancellationToken ct = default)
+    {
+        if (IsBusy)
+            return;
+
+        try
+        {
+            IsBusy = true;
+
+            var dto = new CreateWorkoutLogDto(
+                    SessionId, 
+                    ExerciseId, 
+                    Weight, 
+                    Sets, 
+                    (Reps == 0) ? null : Reps,
+                    (Duration == 0) ? null : Duration,
+                    RestTime);
+            await _workoutLogsService.CreateAsync(dto, ct);
+            await _popupService.ClosePopupAsync(Shell.Current.CurrentPage, ct);
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlertAsync(ex);
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
+
+    [RelayCommand]
+    private async Task CloseAddWorkoutLogPopupAsync(CancellationToken ct = default)
     {
         if (IsBusy)
             return;

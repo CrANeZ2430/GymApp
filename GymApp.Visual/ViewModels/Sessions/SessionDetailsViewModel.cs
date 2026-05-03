@@ -14,12 +14,14 @@ namespace GymApp.Visual.ViewModels.Sessions;
 
 //"Session" should be the same as in the WorkoutsViewModel in GoToSessionDetailsPageAsync method
 [QueryProperty(nameof(Session), "Session")]
+[QueryProperty(nameof(WorkoutLogs), "WorkoutLogs")]
 public partial class SessionDetailsViewModel : BaseViewModel
 {
     private IExercisesService _service;
     private AddWorkoutLogViewModel _popupViewModel;
     [ObservableProperty]
     private SessionDto? _session;
+    public ObservableCollection<WorkoutLogDto> WorkoutLogs { get; set; } = new();
     public ObservableCollection<ExerciseDto> Exercises { get; private set; } = new();
 
     public SessionDetailsViewModel(IExercisesService service, AddWorkoutLogViewModel popupViewModel)
@@ -56,7 +58,7 @@ public partial class SessionDetailsViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    private async Task ShowAddWorkoutLogPopupAsync()
+    private async Task ShowAddWorkoutLogPopupAsync(ExerciseDto dto)
     {
         if (IsBusy)
             return;
@@ -64,13 +66,15 @@ public partial class SessionDetailsViewModel : BaseViewModel
         try
         {
             IsBusy = true;
+            _popupViewModel.SessionId = Session.SessionId;
+            _popupViewModel.ExerciseId = dto.ExerciseId;
             await Shell.Current.CurrentPage.ShowPopupAsync(
                 new AddWorkoutLogPopup(_popupViewModel), new PopupOptions
                 {
                     Shape = new RoundRectangle()
                     {
                         StrokeThickness = 0,
-                        CornerRadius = new CornerRadius(20)
+                        CornerRadius = new CornerRadius(12)
                     }
                 });
         }

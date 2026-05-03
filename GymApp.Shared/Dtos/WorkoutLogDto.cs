@@ -3,7 +3,7 @@
 public record WorkoutLogDto(
     Guid WorkoutLogId,
     Guid SessionId,
-    ExerciseDto Exercises,
+    ExerciseDto Exercise,
     float Weight,
     int Sets,
     int? Reps,
