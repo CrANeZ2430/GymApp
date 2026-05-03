@@ -67,7 +67,11 @@ public partial class SessionDetailsViewModel : BaseViewModel
             await Shell.Current.CurrentPage.ShowPopupAsync(
                 new AddWorkoutLogPopup(_popupViewModel), new PopupOptions
                 {
-                    Shape = null
+                    Shape = new RoundRectangle()
+                    {
+                        StrokeThickness = 0,
+                        CornerRadius = new CornerRadius(20)
+                    }
                 });
         }
         catch (Exception ex)

@@ -13,7 +13,7 @@
             <Label Text="Name" FontAttributes="Bold"/>
             <Entry Text="{Binding Name}" Placeholder="e.g., Bench Press"/>
 
-            <Label Text="Equipment" FontAttributes="Bold" />
+            <Label Text="Equipment" FontAttributes="Bold"/>
             <Picker SelectedItem="{Binding Equipment}">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type model:Equipment}">
