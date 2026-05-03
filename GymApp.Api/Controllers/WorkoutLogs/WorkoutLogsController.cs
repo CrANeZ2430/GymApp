@@ -23,8 +23,12 @@ public class WorkoutLogsController(
         var workoutLogDtos = workoutLogs.Select(wl =>
             new WorkoutLogDto(
                 wl.WorkoutLogId,
-                wl.ExerciseId,
                 wl.SessionId,
+                new ExerciseDto(
+                    wl.Exercise.ExerciseId,
+                    wl.Exercise.Name,
+                    wl.Exercise.MuscleGroups,
+                    wl.Exercise.Equipment),
                 wl.Weight,
                 wl.Sets,
                 wl.Reps,
@@ -42,8 +46,12 @@ public class WorkoutLogsController(
         var workoutLogs = await workoutLogsRepository.GetFromSessionByIdAsync(sessionId, ct);
         var workoutLogDtos = workoutLogs.Select(wl => new WorkoutLogDto(
                 wl.WorkoutLogId,
-                wl.ExerciseId,
                 wl.SessionId,
+                new ExerciseDto(
+                    wl.Exercise.ExerciseId,
+                    wl.Exercise.Name,
+                    wl.Exercise.MuscleGroups,
+                    wl.Exercise.Equipment),
                 wl.Weight,
                 wl.Sets,
                 wl.Reps,
@@ -61,8 +69,12 @@ public class WorkoutLogsController(
         var workoutLog = await workoutLogsRepository.GetByIdAsync(workoutLogId, ct);
         var workoutLogDto = new WorkoutLogDto(
                 workoutLog.WorkoutLogId,
-                workoutLog.ExerciseId,
                 workoutLog.SessionId,
+                new ExerciseDto(
+                    workoutLog.Exercise.ExerciseId,
+                    workoutLog.Exercise.Name,
+                    workoutLog.Exercise.MuscleGroups,
+                    workoutLog.Exercise.Equipment),
                 workoutLog.Weight,
                 workoutLog.Sets,
                 workoutLog.Reps,

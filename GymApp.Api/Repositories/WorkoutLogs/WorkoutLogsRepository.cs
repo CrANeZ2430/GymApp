@@ -9,7 +9,7 @@ public class WorkoutLogsRepository(GymAppDbContext dbContext) : IWorkoutLogsRepo
     public async Task<IEnumerable<WorkoutLog>> GetAsync(CancellationToken ct = default)
     {
         return await dbContext.WorkoutLogs
-            //.Include(ws => ws.Exercise)
+            .Include(ws => ws.Exercise)
             //.Include(ws => ws.Session)
                 //.ThenInclude(s => s.AppUser)
             .AsNoTracking()
@@ -20,13 +20,14 @@ public class WorkoutLogsRepository(GymAppDbContext dbContext) : IWorkoutLogsRepo
     {
         return await dbContext.WorkoutLogs
             .Where(w => w.SessionId == sessionId)
+            .Include(ws => ws.Exercise)
             .ToArrayAsync(ct);
     }
 
     public async Task<WorkoutLog?> GetByIdAsync(Guid workoutLogId, CancellationToken ct = default)
     {
         return await dbContext.WorkoutLogs
-            //.Include(ws => ws.Exercise)
+            .Include(ws => ws.Exercise)
             //.Include(ws => ws.Session)
                 //.ThenInclude(s => s.AppUser)
             .AsNoTracking()

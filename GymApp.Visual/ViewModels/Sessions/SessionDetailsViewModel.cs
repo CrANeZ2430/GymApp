@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Maui.Extensions;
+﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using GymApp.Shared.Dtos;
@@ -6,6 +7,7 @@ using GymApp.Visual.Services.Exercises;
 using GymApp.Visual.ViewModels.Common;
 using GymApp.Visual.ViewModels.WorkoutLogs;
 using GymApp.Visual.Views.WorkoutLogs;
+using Microsoft.Maui.Controls.Shapes;
 using System.Collections.ObjectModel;
 
 namespace GymApp.Visual.ViewModels.Sessions;
@@ -62,7 +64,11 @@ public partial class SessionDetailsViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            await Shell.Current.CurrentPage.ShowPopupAsync(new AddWorkoutLogPopup(_popupViewModel));
+            await Shell.Current.CurrentPage.ShowPopupAsync(
+                new AddWorkoutLogPopup(_popupViewModel), new PopupOptions
+                {
+                    Shape = null
+                });
         }
         catch (Exception ex)
         {
