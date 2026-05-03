@@ -135,11 +135,13 @@
 
                 <Button Grid.Row="5" 
                         Grid.Column="0"
-                        Text="Save"/>
+                        Text="Save"
+                        TextColor="White"/>
 
                 <Button Grid.Row="5"
                         Grid.Column="1"
                         Text="Close"
+                        TextColor="White"
                         Command="{Binding CloseAddWorkoutLogPopupCommand}"/>
             </Grid>
         </VerticalStackLayout>

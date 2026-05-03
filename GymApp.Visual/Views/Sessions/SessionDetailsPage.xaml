@@ -69,6 +69,7 @@
 
         <Button Grid.Row="2" 
             Text="Show Exercises"
+            TextColor="White"
             Command="{Binding GetExercisesCommand}"
             Margin="0,10,0,0"/>
     </Grid>
