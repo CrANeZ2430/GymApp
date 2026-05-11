@@ -10,9 +10,10 @@ public static class ViewsRegistration
     public static void RegisterViews(this IServiceCollection services)
     {
         services.AddSingleton<MainPage>();
-        services.AddTransient<ExercisesPage>();
+        services.AddSingleton<ExercisesPage>();
+        services.AddSingleton<WorkoutsPage>();
+
         services.AddTransient<AddExercisePage>();
-        services.AddTransient<WorkoutsPage>();
         services.AddTransient<AddSessionPage>();
         services.AddTransient<SessionDetailsPage>();
         services.AddTransient<AddWorkoutLogPopup>();

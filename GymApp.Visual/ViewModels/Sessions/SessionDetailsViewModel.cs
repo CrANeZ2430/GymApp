@@ -21,8 +21,10 @@ public partial class SessionDetailsViewModel : BaseViewModel
     private AddWorkoutLogViewModel _popupViewModel;
     [ObservableProperty]
     private SessionDto? _session;
-    public ObservableCollection<WorkoutLogDto> WorkoutLogs { get; set; } = new();
-    public ObservableCollection<ExerciseDto> Exercises { get; private set; } = new();
+    [ObservableProperty]
+    private ObservableCollection<WorkoutLogDto> _workoutLogs = new();
+    [ObservableProperty]
+    public ObservableCollection<ExerciseDto> _exercises = new();
 
     public SessionDetailsViewModel(IExercisesService service, AddWorkoutLogViewModel popupViewModel)
     {

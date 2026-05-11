@@ -10,9 +10,10 @@ public static class ViewModelsRegistration
     public static void RegisterViewModels(this IServiceCollection services)
     {
         services.AddSingleton<MainViewModel>();
-        services.AddTransient<ExercisesViewModel>();
+        services.AddSingleton<ExercisesViewModel>();
+        services.AddSingleton<WorkoutsViewModel>();
+
         services.AddTransient<AddExerciseViewModel>();
-        services.AddTransient<WorkoutsViewModel>();
         services.AddTransient<AddSessionViewModel>();
         services.AddTransient<SessionDetailsViewModel>();
         services.AddTransient<AddWorkoutLogViewModel>();

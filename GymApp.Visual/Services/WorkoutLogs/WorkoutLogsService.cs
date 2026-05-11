@@ -29,7 +29,7 @@ public class WorkoutLogsService(HttpClient httpClient) : BaseService(httpClient)
         try
         {
             var workoutLogs = await _client.GetFromJsonAsync<IEnumerable<WorkoutLogDto>>(
-                GymAppConstants.WORKOUTLOGS_ENDPOINT, _options, ct);
+                GymAppConstants.WORKOUTLOGS_ENDPOINT + $"/session/{sessionId}", _options, ct);
             return workoutLogs ?? Enumerable.Empty<WorkoutLogDto>();
         }
         catch (Exception ex)
